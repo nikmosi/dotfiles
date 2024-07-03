@@ -8,6 +8,8 @@ if status is-interactive
     starship init fish | source
     zoxide init fish | source
 
+    bind \cx\ce edit_command
+
 
     set -x GTK2_RC_FILES "/usr/share/themes/Numix/gtk-2.0/gtkrc"
     set -x QT_QPA_PLATFORMTHEME gtk3
