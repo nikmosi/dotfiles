@@ -9,6 +9,7 @@ if status is-interactive
     zoxide init fish | source
 
     bind \cx\ce edit_command
+    bind \co copy_current_command
 
 
     set -x GTK2_RC_FILES "/usr/share/themes/Numix/gtk-2.0/gtkrc"
@@ -24,6 +25,7 @@ if status is-interactive
     set -x GTK_THEME "Numix:dark"
     set -x PASSWORD_STORE_ENABLE_EXTENSIONS true
 
+    alias x='extract'
 
     abbr - 'cd -'
     alias ...=../..
