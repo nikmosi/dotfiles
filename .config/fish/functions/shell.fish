@@ -1,7 +1,7 @@
 function shell
     function cut
         set name $argv[1]
-        echo $name | sed -E 's/:.*//; s/.*-//; s/^\s+//; s/\s+$//'
+        echo $name | sed -E 's/:.*//; s/[*-]+\s+//; s/^\s+//; s/\s+$//'
         functions -e inner_func
     end
 
@@ -30,6 +30,6 @@ function shell
 
     echo spawn $env
     set env (cut $env)
-    fish -C "eval (pdm venv activate $env)"
+    fish -C "eval (pdm venv activate '$env')"
 end
 
