@@ -11,6 +11,7 @@ if status is-interactive
     bind \cx\ce edit_command
     bind \co copy_current_command
 
+    set PATH $PATH /home/nik/.local/bin
 
     set -x GTK2_RC_FILES "/usr/share/themes/Numix/gtk-2.0/gtkrc"
     set -x QT_QPA_PLATFORMTHEME gtk3
