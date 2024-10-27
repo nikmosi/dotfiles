@@ -2,9 +2,9 @@ USE_POWERLINE="true"
 
 export ZSH="$HOME/.oh-my-zsh"
 
-# ZSH_THEME="strug"
+ZSH_THEME="zshfish"
 
-plugins=(git archlinux zsh-syntax-highlighting copybuffer copyfile copypath cp dotnet extract fd fzf git-extras gitfast pass pep8 postgres rsync themes transfer poetry pre-commit docker docker-compose tmux)
+plugins=(git archlinux zsh-syntax-highlighting copybuffer copyfile copypath cp dotnet extract fzf git-extras gitfast pass pep8 postgres rsync themes transfer poetry pre-commit docker docker-compose tmux)
 
 source $ZSH/oh-my-zsh.sh
 

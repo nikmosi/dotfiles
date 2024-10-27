@@ -35,7 +35,15 @@ if status is-interactive
     abbr --position anywhere -a ...... ../../../../..
 
     abbr -a CA --position anywhere '2>&1 | cat -A'
-    abbr -a G --position anywhere '| rg'
+    function replace_all_g_with_rg
+        set cmd (commandline)
+        set cmd (string replace -a ' G ' ' | rg ' $cmd)
+        commandline -r "$cmd"
+        commandline -f execute
+    end
+    bind \r replace_all_g_with_rg
+
+
     abbr -a H --position anywhere  '| head'
     abbr -a L --position anywhere '| less'
     abbr -a LL --position anywhere '2>&1 | less'
@@ -337,38 +345,11 @@ if status is-interactive
     alias pacrmorphans='sudo pacman -Rs (pacman -Qtdq)'
     alias pacupd='sudo pacman -Sy'
     alias pacupg='sudo pacman -Syu'
-    alias pad='poetry add'
-    alias pbld='poetry build'
-    alias pch='poetry check'
-    alias pcmd='poetry list'
-    alias pconf='poetry config --list'
-    alias pexp='poetry export --without-hashes > requirements.txt'
-    alias pin='poetry init'
-    alias pinst='poetry install'
-    alias plck='poetry lock'
-    alias pnew='poetry new'
-    alias ppath='poetry env info --path'
-    alias pplug='poetry self show plugins'
-    alias ppub='poetry publish'
     alias prc=pre-commit
     alias prcau='pre-commit autoupdate'
     alias prcr='pre-commit run'
     alias prcra='pre-commit run --all-files'
     alias prcrf='pre-commit run --files'
-    alias prm='poetry remove'
-    alias prun='poetry run'
-    alias psad='poetry self add'
-    alias psh='poetry shell'
-    alias pshw='poetry show'
-    alias pslt='poetry show --latest'
-    alias psup='poetry self update'
-    alias psync='poetry install --sync'
-    alias ptree='poetry show --tree'
-    alias pup='poetry update'
-    alias pvinf='poetry env info'
-    alias pvoff='poetry config virtualenvs.create false'
-    alias pvrm='poetry env remove'
-    alias pvu='poetry env use'
     alias py=python
     alias rd=rmdir
     alias rename=perl-rename
