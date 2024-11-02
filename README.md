@@ -9,4 +9,5 @@ git clone --recurse-submodules <link to repo>
 - Create symlinks 
 ```bash 
 stow .
+stow -R -v -t ~ .
 ```
