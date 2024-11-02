@@ -1,0 +1,30 @@
+[user]
+	email = i@nikmosi.ru
+	name = nikmosi
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+[merge]
+	conflictstyle = zdiff3
+	tool = meld
+[push]
+	default = current
+[commit]
+	verbose = true
+[rerere]
+	enabled = true
+[core]
+	pager = bat
+[diff]
+	algorithm = histogram
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+[receive]
+	fsckObjects = true
+[branch]
+	sort = -committerdate
