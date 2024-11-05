@@ -1,6 +1,7 @@
 [user]
 	email = i@nikmosi.ru
 	name = nikmosi
+	signingkey = B77DD388609E81892CBC2D6AB9CF67BBE64E1273
 [init]
 	defaultBranch = main
 [pull]
@@ -12,6 +13,7 @@
 	default = current
 [commit]
 	verbose = true
+	gpgsign = true
 [rerere]
 	enabled = true
 [core]
