@@ -14,6 +14,7 @@ if status is-interactive
     set PATH $PATH /home/nik/.local/bin
 
     set -x GTK2_RC_FILES "/usr/share/themes/Numix/gtk-2.0/gtkrc"
+    set -x RUFF_EXPERIMENTAL_FORMATTER "True"
     set -x QT_QPA_PLATFORMTHEME gtk3
     set -x LANG en_US.UTF-8
     set -x GTK2_RC_FILES /usr/share/themes/Numix/gtk-2.0/gtkrc
