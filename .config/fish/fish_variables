@@ -52,5 +52,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dreverse
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR --export fish_tmux_autostarted:true
-SETUVAR --export fish_tmux_config:/home/nik/\x2econfig/fish/config\x2efish
+SETUVAR --export fish_tmux_autostarted:false

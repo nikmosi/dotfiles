@@ -2,6 +2,8 @@ function fish_greeting
 end
 
 set -x fish_tmux_autostart false
+set -x fish_tmux_autostarted false
+set -x fish_tmux_config "$HOME/.tmux.conf"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -36,17 +38,10 @@ if status is-interactive
     abbr --position anywhere -a ...... ../../../../..
 
     abbr -a CA --position anywhere '2>&1 | cat -A'
-    function replace_all_g_with_rg
-        set cmd (commandline)
-        set cmd (string replace -a ' G ' ' | rg ' $cmd)
-        commandline -r "$cmd"
-        commandline -f execute
-    end
-    bind \r replace_all_g_with_rg
-
 
     abbr -a H --position anywhere  '| head'
     abbr -a L --position anywhere '| less'
+    abbr -a G --position anywhere '| rg'
     abbr -a LL --position anywhere '2>&1 | less'
     abbr -a M --position anywhere '| most'
     abbr -a NE --position anywhere '2> /dev/null'
@@ -364,7 +359,6 @@ if status is-interactive
     alias tds=_tmux_directory_session
     alias tksv='tmux kill-server'
     alias tl='tmux list-sessions'
-    alias tmuxconf='$EDITOR $ZSH_TMUX_CONFIG'
     alias to_clip='xclip -sel clip'
     alias tree='exa --tree'
     alias unexport=unset
