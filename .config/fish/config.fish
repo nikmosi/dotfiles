@@ -356,9 +356,6 @@ if status is-interactive
     alias run-help=man
     alias sortnr='sort -n -r'
     alias t='tail -f'
-    alias tds=_tmux_directory_session
-    alias tksv='tmux kill-server'
-    alias tl='tmux list-sessions'
     alias to_clip='xclip -sel clip'
     alias tree='exa --tree'
     alias unexport=unset
