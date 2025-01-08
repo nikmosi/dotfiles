@@ -13,7 +13,7 @@
 	default = current
 [commit]
 	verbose = true
-	gpgsign = false
+	gpgsign = true
 [rerere]
 	enabled = true
 [core]
