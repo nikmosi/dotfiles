@@ -149,7 +149,7 @@ end
 
 function _fish_tmux_directory_session
     # current directory without leading path
-    set dir (basename $PWD)
+    set dir (basename $PWD | tr "." "_")
     # md5 hash for the full working directory path
     set md5 (echo -n $PWD | md5sum | cut -d ' ' -f 1)
     # human friendly unique session name for this directory

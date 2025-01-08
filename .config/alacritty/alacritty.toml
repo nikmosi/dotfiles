@@ -18,7 +18,7 @@ cyan = "#689d6a"
 green = "#98971a"
 magenta = "#b16286"
 red = "#cc241d"
-white = "#a89984"
+white = "#d3d3d3"
 yellow = "#d79921"
 
 [colors.primary]
@@ -32,7 +32,7 @@ shape = "Beam"
 TERM = "xterm-256color"
 
 [font]
-size = 16 
+size = 12 
 
 [font.bold]
 family = "Source Code Pro"
