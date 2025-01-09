@@ -74,7 +74,8 @@ if status is-interactive
     alias rd=rmdir
     alias rename=perl-rename
     alias sortnr='sort -n -r'
-    alias t='tail -f'
+    alias tt='tail -f'
+    alias t='tmux'
     alias to_clip='xclip -sel clip'
     alias tree='exa --tree'
     alias which-command=whence
