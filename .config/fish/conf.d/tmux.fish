@@ -10,6 +10,7 @@ else
     set -q fish_tmux_config || set -gx fish_tmux_config "$HOME/.tmux.conf"
 end
 
+
 # aliases
 alias tmux=_fish_tmux_plugin_run
 function _fish_tmux_create_aliases --on-variable fish_tmux_no_alias
@@ -33,6 +34,7 @@ function _fish_tmux_create_aliases --on-variable fish_tmux_no_alias
         end
 
         alias tds=_fish_tmux_directory_session
+        alias t='tds'
         alias tksv="command tmux kill-server"
         alias tl="command tmux list-sessions"
         alias tmuxconf="$EDITOR $fish_tmux_config"
