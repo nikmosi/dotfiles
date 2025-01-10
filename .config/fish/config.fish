@@ -75,6 +75,9 @@ if status is-interactive
     alias rename=perl-rename
     alias sortnr='sort -n -r'
     alias tt='tail -f'
+    function copy 
+        cat $argv[1] | to_clip
+    end
     alias to_clip='xclip -sel clip'
     alias tree='exa --tree'
     alias which-command=whence
