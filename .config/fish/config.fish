@@ -1,5 +1,5 @@
-function fish_greeting
-end
+set fish_greeting
+bass source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 set -x fish_tmux_autostart false
 set -x fish_tmux_autostarted false
