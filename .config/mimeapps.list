@@ -32,10 +32,10 @@ x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/okular=pdf-view-opener.desktop;
 x-scheme-handler/postman=Postman.desktop;
-x-scheme-handler/tg=userapp-AyuGram Desktop-INCJK2.desktop;
-x-scheme-handler/tonsite=userapp-AyuGram Desktop-9PA1S2.desktop;
+x-scheme-handler/tg=userapp-AyuGram Desktop-QQTK02.desktop
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-KYFK02.desktop
+
 [Added Associations]
 inode/directory=thunar.desktop;
-x-scheme-handler/tg=userapp-AyuGram Desktop-INCJK2.desktop;
-x-scheme-handler/tonsite=userapp-AyuGram Desktop-9PA1S2.desktop;
-
+x-scheme-handler/tg=userapp-AyuGram Desktop-INCJK2.desktop;userapp-AyuGram Desktop-QQTK02.desktop;
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-9PA1S2.desktop;userapp-AyuGram Desktop-KYFK02.desktop;
