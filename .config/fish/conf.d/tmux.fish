@@ -156,6 +156,8 @@ function _fish_tmux_directory_session
     set md5 (echo -n $PWD | md5sum | cut -d ' ' -f 1)
     # human friendly unique session name for this directory
     set session_name "$dir"-(string shorten --char="" --max 6 $md5)
+    
+    test "$PWD" = "$HOME" && set session_name HOME
 
     set pane_id (tmux display-message -p "#{pane_id}")
     
