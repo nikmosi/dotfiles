@@ -6,6 +6,7 @@ set -x fish_tmux_autostarted false
 set -x fish_tmux_config "$HOME/.config/tmux/tmux.conf"
 
 if status is-interactive
+    alias startwine="env '/home/nik/.local/share/StartWine/data/runtime/sw'"
     alias wu="nix-shell -p wireguard-tools --run 'wg-quick up wg0'"
     alias wd="nix-shell -p wireguard-tools --run 'wg-quick down wg0'"
     function take
