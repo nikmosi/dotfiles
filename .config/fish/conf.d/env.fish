@@ -8,6 +8,7 @@ set -x fish_tmux_config "$HOME/.config/tmux/tmux.conf"
 
 if status is-interactive
     set PATH $PATH /home/nik/.local/bin
+    set PATH $PATH (realpath (dirname (status --current-filename))/../repo_plugin/git-fuzzy/bin)
 
     set -x GTK2_RC_FILES "/usr/share/themes/Numix/gtk-2.0/gtkrc"
     set -x RUFF_EXPERIMENTAL_FORMATTER "True"
