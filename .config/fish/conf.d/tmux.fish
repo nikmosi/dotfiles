@@ -1,3 +1,6 @@
+set -x fish_tmux_fixterm_without_256color "tmux"
+set -x fish_tmux_fixterm_with_256color "tmux-256color"
+
 # global variables
 set -q fish_tmux_autostart || set -g fish_tmux_autostart false
 set -q fish_tmux_autostarted || set -gx fish_tmux_autostarted false
@@ -67,18 +70,6 @@ function _fish_tmux_plugin_run
     set -q fish_tmux_fixterm || set fish_tmux_fixterm true
     set -q fish_tmux_iterm2 || set fish_tmux_iterm2 false
     set -q fish_tmux_unicode || set fish_tmux_unicode false
-
-    if test -e /usr/share/terminfo/t/tmux
-        set -q fish_tmux_fixterm_without_256color || set fish_tmux_fixterm_without_256color "tmux"
-    else
-        set -q fish_tmux_fixterm_without_256color || set fish_tmux_fixterm_without_256color "screen"
-    end
-
-    if test -e /usr/share/terminfo/t/tmux-256color
-        set -q fish_tmux_fixterm_with_256color || set fish_tmux_fixterm_with_256color "tmux-256color"
-    else
-        set -q fish_tmux_fixterm_with_256color || set fish_tmux_fixterm_with_256color "screen-256color"
-    end
 
     # determine if the terminal supports 256 color
     if test (tput colors) = "256"
@@ -156,11 +147,11 @@ function _fish_tmux_directory_session
     set md5 (echo -n $PWD | md5sum | cut -d ' ' -f 1)
     # human friendly unique session name for this directory
     set session_name "$dir"-(string shorten --char="" --max 2 $md5)
-    
+
     test "$PWD" = "$HOME" && set session_name HOME
 
     set pane_id (tmux display-message -p "#{pane_id}")
-    
+
     tmux new-session -d -s "$session_name"
 
     # Если внутри tmux, переключаемся на сессию
