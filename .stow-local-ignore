@@ -4,4 +4,5 @@ enchancer_for_youtuve
 README.md
 .git
 .gitignore
+.pre-commit-config.yaml
 .gitmodules
