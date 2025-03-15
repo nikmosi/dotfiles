@@ -6,6 +6,7 @@ if status is-interactive
     alias wd="nix-shell -p wireguard-tools --run 'wg-quick down wg0'"
     starship init fish | source
     zoxide init fish | source
+    direnv hook fish | source
 
     bind \cx\ce edit_command
     bind \co copy_current_command

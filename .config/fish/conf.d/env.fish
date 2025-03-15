@@ -1,7 +1,7 @@
 set fish_greeting
 bass source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
 
-set -x fish_tmux_autostart true
+set -x fish_tmux_autostart false
 set -x fish_tmux_autostart_once false
 set -x fish_tmux_autoname_session true
 set -x fish_tmux_config "$HOME/.config/tmux/tmux.conf"
@@ -30,4 +30,3 @@ set ___MY_VMOPTIONS_SHELL_FILE "$HOME/.jetbrains.vmoptions.sh"
 if test -f $___MY_VMOPTIONS_SHELL_FILE
     . $___MY_VMOPTIONS_SHELL_FILE
 end
-
