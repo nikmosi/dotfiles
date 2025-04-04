@@ -1245,3 +1245,29 @@ alias dxc = docker container exec
 alias dxcit = docker container exec -it
 
 alias t = sesh connect .
+
+
+def edit-command [] {
+    if not ($env.EDITOR? != null) {
+        return "EDITOR is not set"
+    }
+
+    let tmpfile = (mktemp)
+
+    if ($tmpfile | is-empty) {
+        return "Failed to create tmpfile"
+    }
+
+    # Save the current commandline into the temp file
+    let current_line = (commandline)
+    $current_line | save --force $tmpfile
+
+    # Launch the editor
+    do -i { run-external $env.EDITOR $tmpfile }
+
+    # Replace the current commandline with the edited one
+    let new_line = (open $tmpfile | str join "\n")
+    commandline edit $new_line
+
+    rm $tmpfile
+}
