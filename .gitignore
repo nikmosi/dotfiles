@@ -2,3 +2,4 @@
 .config/ranger/colorschemes/
 .config/mpv/history.log
 .pre-commit-config.yaml
+history.txt
