@@ -1,0 +1,259 @@
+ls
+la
+starship --hekp
+starship --help
+starship init
+starship init nu
+starship init nu | source
+starship init nu | source -- -
+$env.PROMPT_COMMAND = { starship prompt }
+l
+la
+ls
+ls -la
+ls -la | where --help
+ls -la | where type == ""
+$env.PROMPT_COMMAND = { starship prompt }
+gst
+ls
+la
+ls
+ls -la
+ls -la | select target
+ls -la | where target
+ls -la | where target ~= ''
+ls -la | where target != ''
+l
+ls
+z
+cd .config/fish/
+l
+ls
+z ..
+cd ..
+ls
+cd nushell/
+ls
+pwd
+realpath -f .
+realpath --absolute .
+realpath  .
+l
+ls
+v config.nu
+t
+ls
+vim .
+$nu.config-path
+ls
+z ..
+l
+ls
+gst
+ls
+cd ..
+cd fish/
+l
+ls
+v
+l
+ll
+all
+nu -c ls
+gst
+cd
+cd .flake/
+l
+z
+z flak
+l
+t
+tmux
+tmux
+ls
+l
+gst
+z
+z flak
+l
+gst
+v
+gst
+nh os switch
+v
+sw
+ls G
+ls G config
+gst
+ls G config
+abbr
+alias --help
+abbr
+abbr --help
+alias --help
+ls | rg cofig
+ls | rg con
+l
+ls
+ls|to json
+tree
+exa
+exa -la
+which ls
+exa -la | detect colums
+exa -la | detect columns
+exa -la --tree | detect columns
+nvim
+gst
+git status
+z
+z flak
+gst
+git status
+gd
+git diff
+git switch -c feat/nushell
+gst
+git status
+git add .
+git commit -a
+git switch master
+git switch main
+gst
+sw && hms
+sw
+nh os switch
+os home switch
+nh
+nh home switch
+shell
+nu
+gst
+date -u
+date --help
+date now
+gst
+mkdir --help
+gst
+head -n
+head --help
+head -n10
+head -n 10
+1
+32
+head -n10
+head -n 10
+gst
+la
+l
+fish
+v
+t
+gst
+v
+tskv
+tmux kill-server
+l
+la
+ls
+ls -la
+ls -la | select name
+ls -la | select name,mode,user
+ls -la | select name mode
+ls -la | select name mode icode size
+ls -la | select name mode inode size
+hms
+z bushell
+z nushell
+t
+$nu
+$nu.cache-dir
+asdf
+paste
+z
+z .cache/
+l
+ls
+cd nushell
+$nu.cache-dir
+cd
+cd .cache/nushell
+mkdir --help
+mkdir ($nu.cache-dir | path join 'carapce')
+l
+ls
+z
+z .dotfiles/
+ls
+z
+z .cache/nushell/
+l
+ls
+z carapce/
+ls
+la
+ls -la
+carapace
+carapace nushell
+pasdf
+carapace _carapace nushell
+carapace _carapace nushell | save -f ($nu.cache-dir | path join 'carapace/init.nu')
+z
+z .cache/nushell/
+ls
+la
+ls -la
+cd carapce/
+l
+ls
+rm .*
+rm :
+rm *
+cd ..
+l
+rm -d carapce/
+rm -d carapce
+rm carapce/
+carapace _carapace nushell | save -f ($nu.cache-dir | path join 'carapace/init.nu')
+mkdir ($nu.cache-dir | path join 'carapace')
+carapace _carapace nushell | save -f ($nu.cache-dir | path join 'carapace/init.nu')
+ls config.nu
+z flak
+l
+t
+v
+v
+gst
+gd
+gca
+gs
+gst
+glol
+gsw main
+fish
+g
+gb
+gm feat/nushell
+z flak
+tmux kill-server
+t
+glol
+gbd feat/nushell
+gp
+z nvim
+z dot
+l
+ls
+l
+gst
+$env.editor
+z .config/nushell/
+l
+$env.config.menu
+$env.config.menus
+ls
+ls Desktop/
+v .
+gst
+ga .
+gc
