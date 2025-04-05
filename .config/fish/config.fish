@@ -30,6 +30,7 @@ if status is-interactive
     abbr -a T --position anywhere '| tail'
     abbr -a _ --position anywhere 'sudo'
 
+    alias tp="sesh connect (sesh list | fzf)"
     alias abs='readlink -f'
     alias cat=bat
     alias d='ripdrag -a -x'
