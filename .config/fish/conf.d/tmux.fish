@@ -141,26 +141,8 @@ function _fish_tmux_plugin_run
 end
 
 function _fish_tmux_directory_session
-    # current directory without leading path
     set dir (basename $PWD | tr "." "_")
-    # md5 hash for the full working directory path
-    set md5 (echo -n $PWD | md5sum | cut -d ' ' -f 1)
-    # human friendly unique session name for this directory
-    set session_name "$dir"-(string shorten --char="" --max 2 $md5)
-
-    test "$PWD" = "$HOME" && set session_name HOME
-
-    set pane_id (tmux display-message -p "#{pane_id}")
-
-    tmux new-session -d -s "$session_name"
-
-    # Если внутри tmux, переключаемся на сессию
-    if test -n "$TMUX"
-        tmux switch-client -t "$session_name"
-        tmux kill-pane -t $pane_id
-    else
-        tmux attach-session -t "$session_name"
-    end
+    sesh connect $dir
 end
 
 # this will autostart tmux if $fish_tmux_autostart is set to `true` using the `--on-variable` function option
