@@ -141,8 +141,7 @@ function _fish_tmux_plugin_run
 end
 
 function _fish_tmux_directory_session
-    set dir (basename $PWD | tr "." "_")
-    sesh connect $dir
+    sesh connect $PWD
 end
 
 # this will autostart tmux if $fish_tmux_autostart is set to `true` using the `--on-variable` function option
