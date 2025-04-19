@@ -1,4 +1,21 @@
-source (dirname (realpath (status -f)))/conf.d/env.fish
+source (dirname (status -f))/conf.d/env.fish
+
+function tmux_pick
+    sesh connect (
+            sesh list --icons | fzf \
+              --no-sort --ansi --border-label ' sesh ' --prompt '⚡  ' \
+              --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find' \
+              --bind 'tab:down,btab:up' \
+              --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list --icons)' \
+              --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t --icons)' \
+              --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c --icons)' \
+              --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z --icons)' \
+              --bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+              --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)' \
+              --preview-window 'right:55%' \
+              --preview 'sesh preview {}'
+          )
+end
 
 if status is-interactive
     alias startwine="env '/home/nik/.local/share/StartWine/data/runtime/sw'"
@@ -6,7 +23,6 @@ if status is-interactive
     alias wd="nix-shell -p wireguard-tools --run 'wg-quick down wg0'"
     starship init fish | source
     zoxide init fish | source
-    direnv hook fish | source
 
     bind \cx\ce edit_command
     bind \co copy_current_command
@@ -19,7 +35,7 @@ if status is-interactive
 
     abbr -a CA --position anywhere '2>&1 | cat -A'
 
-    abbr -a H --position anywhere  '| head'
+    abbr -a H --position anywhere '| head'
     abbr -a L --position anywhere '| less'
     abbr -a G --position anywhere '| rg'
     abbr -a LL --position anywhere '2>&1 | less'
@@ -28,9 +44,9 @@ if status is-interactive
     abbr -a NUL --position anywhere '> /dev/null 2>&1'
     abbr -a P --position anywhere '2>&1| pygmentize -l pytb'
     abbr -a T --position anywhere '| tail'
-    abbr -a _ --position anywhere 'sudo'
+    abbr -a _ --position anywhere sudo
 
-    alias tp="sesh connect (sesh list | fzf)"
+    alias tp=tmux_pick
     alias abs='readlink -f'
     alias cat=bat
     alias d='ripdrag -a -x'
