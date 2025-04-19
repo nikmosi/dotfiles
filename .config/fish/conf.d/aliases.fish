@@ -179,6 +179,9 @@ end
 
 # exa.fish
 if type -q exa
+    function tree
+        exa --tree
+    end
     function l --wraps exa
         exa -lhF $argv
     end

@@ -47,65 +47,55 @@ if status is-interactive
     function startwine
         env '/home/nik/.local/share/StartWine/data/runtime/sw'
     end
-    function wu
-        nix-shell -p wireguard-tools --run 'wg-quick up wg0'
+    function tp --wraps tmux
+        tmux_pick $argv
     end
-    function wd
-        nix-shell -p wireguard-tools --run 'wg-quick down wg0'
+    function abs --wraps readlink
+        readlink -f $argv
     end
-
-    function tp
-        tmux_pick
+    function cat --wraps bat
+        bat $argv
     end
-    function abs
-        readlink -f
+    function d --wraps ripdrag
+        ripdrag -a -x $argv
     end
-    function cat
-        bat
+    function ddate --wraps date
+        date -u +%Y-%m-%dT%H:%M:%S $argv
     end
-    function d
-        ripdrag -a -x
+    function md --wraps mkdir
+        mkdir -p $argv
     end
-    function ddate
-        date -u +%Y-%m-%dT%H:%M:%S
+    function rd --wraps rmdir
+        rmdir $argv
     end
-    function md
-        mkdir -p
+    function mv --wraps mv
+        mv -i $argv
     end
-    function rd
-        rmdir
+    function cp --wraps cp
+        cp -i $argv
     end
-    function mv
-        mv -i
+    function py --wraps python
+        python $argv
     end
-    function cp
-        cp -i
+    function rename --wraps perl-rename
+        perl-rename $argv
     end
-    function py
-        python
+    function sortnr --wraps sort
+        sort -n -r $argv
     end
-    function rename
-        perl-rename
+    function tt --wraps tail
+        tail -f $argv
     end
-    function sortnr
-        sort -n -r
+    function to_clip --wraps xclip
+        xclip -sel clip $argv
     end
-    function tt
-        tail -f
+    function which-command --wraps whence
+        whence $argv
     end
-    function to_clip
-        xclip -sel clip
+    function ww --wraps ls
+        ls *mkv | head -n 1 | tee $TTY | xargs -I {} mv {} {}_ $argv
     end
-    function tree
-        exa --tree
-    end
-    function which-command
-        whence
-    end
-    function ww
-        ls *mkv | head -n 1 | tee $TTY | xargs -I {} mv {} {}_
-    end
-    function x
-        extract
+    function x --wraps extract
+        extract $argv
     end
 end
