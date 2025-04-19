@@ -17,10 +17,8 @@ function tmux_pick
           )
 end
 
+
 if status is-interactive
-    alias startwine="env '/home/nik/.local/share/StartWine/data/runtime/sw'"
-    alias wu="nix-shell -p wireguard-tools --run 'wg-quick up wg0'"
-    alias wd="nix-shell -p wireguard-tools --run 'wg-quick down wg0'"
     starship init fish | source
     zoxide init fish | source
 
@@ -46,23 +44,68 @@ if status is-interactive
     abbr -a T --position anywhere '| tail'
     abbr -a _ --position anywhere sudo
 
-    alias tp=tmux_pick
-    alias abs='readlink -f'
-    alias cat=bat
-    alias d='ripdrag -a -x'
-    alias ddate='date -u +%Y-%m-%dT%H:%M:%S'
+    function startwine
+        env '/home/nik/.local/share/StartWine/data/runtime/sw'
+    end
+    function wu
+        nix-shell -p wireguard-tools --run 'wg-quick up wg0'
+    end
+    function wd
+        nix-shell -p wireguard-tools --run 'wg-quick down wg0'
+    end
 
-    alias md='mkdir -p'
-    alias rd=rmdir
-    alias mv='mv -i'
-    alias cp='cp -i'
-    alias py=python
-    alias rename=perl-rename
-    alias sortnr='sort -n -r'
-    alias tt='tail -f'
-    alias to_clip='xclip -sel clip'
-    alias tree='exa --tree'
-    alias which-command=whence
-    alias ww='ls *mkv | head -n 1 | tee $TTY | xargs -I {} mv {} {}_'
-    alias x=extract
+    function tp
+        tmux_pick
+    end
+    function abs
+        readlink -f
+    end
+    function cat
+        bat
+    end
+    function d
+        ripdrag -a -x
+    end
+    function ddate
+        date -u +%Y-%m-%dT%H:%M:%S
+    end
+    function md
+        mkdir -p
+    end
+    function rd
+        rmdir
+    end
+    function mv
+        mv -i
+    end
+    function cp
+        cp -i
+    end
+    function py
+        python
+    end
+    function rename
+        perl-rename
+    end
+    function sortnr
+        sort -n -r
+    end
+    function tt
+        tail -f
+    end
+    function to_clip
+        xclip -sel clip
+    end
+    function tree
+        exa --tree
+    end
+    function which-command
+        whence
+    end
+    function ww
+        ls *mkv | head -n 1 | tee $TTY | xargs -I {} mv {} {}_
+    end
+    function x
+        extract
+    end
 end

@@ -1,177 +1,177 @@
-function gs
+function gs --wraps gs
 end
 # docker.fish
 if type -q docker
-    function dbl
-        docker build
+    function dbl --wraps docker
+        docker build $argv
     end
-    function dcb
-        docker-compose build
+    function dcb --wraps docker
+        docker-compose build $argv
     end
-    function dcdn
-        docker-compose down
+    function dcdn --wraps docker
+        docker-compose down $argv
     end
-    function dce
-        docker-compose exec
+    function dce --wraps docker
+        docker-compose exec $argv
     end
-    function dcin
-        docker container inspect
+    function dcin --wraps docker
+        docker container inspect $argv
     end
-    function dck
-        docker compose kill
+    function dck --wraps docker
+        docker compose kill $argv
     end
-    function dcl
-        docker compose logs
+    function dcl --wraps docker
+        docker compose logs $argv
     end
-    function dclF
-        docker compose logs -f --tail 0
+    function dclF --wraps docker
+        docker compose logs -f --tail 0 $argv
     end
-    function dclf
-        docker compose logs -f
+    function dclf --wraps docker
+        docker compose logs -f $argv
     end
-    function dcls
-        docker container ls
+    function dcls --wraps docker
+        docker container ls $argv
     end
-    function dclsa
-        docker container ls -a
+    function dclsa --wraps docker
+        docker container ls -a $argv
     end
-    function dco
-        docker compose
+    function dco --wraps docker
+        docker compose $argv
     end
-    function dcps
-        docker compose ps
+    function dcps --wraps docker
+        docker compose ps $argv
     end
-    function dcpull
-        docker compose pull
+    function dcpull --wraps docker
+        docker compose pull $argv
     end
-    function dcr
-        docker compose run
+    function dcr --wraps docker
+        docker compose run $argv
     end
-    function dcrestart
-        docker compose restart
+    function dcrestart --wraps docker
+        docker compose restart $argv
     end
-    function dcrm
-        docker compose rm
+    function dcrm --wraps docker
+        docker compose rm $argv
     end
-    function dcstart
-        docker compose start
+    function dcstart --wraps docker
+        docker compose start $argv
     end
-    function dcstop
-        docker compose stop
+    function dcstop --wraps docker
+        docker compose stop $argv
     end
-    function dcup
-        docker compose up
+    function dcup --wraps docker
+        docker compose up $argv
     end
-    function dcupb
-        docker compose up --build
+    function dcupb --wraps docker
+        docker compose up --build $argv
     end
-    function dcupd
-        docker compose up -d
+    function dcupd --wraps docker
+        docker compose up -d $argv
     end
-    function dcupdb
-        docker compose up -d --build
+    function dcupdb --wraps docker
+        docker compose up -d --build $argv
     end
-    function dib
-        docker image build
+    function dib --wraps docker
+        docker image build $argv
     end
-    function dii
-        docker image inspect
+    function dii --wraps docker
+        docker image inspect $argv
     end
-    function dils
-        docker image ls
+    function dils --wraps docker
+        docker image ls $argv
     end
-    function dipu
-        docker image push
+    function dipu --wraps docker
+        docker image push $argv
     end
-    function dirm
-        docker image rm
+    function dirm --wraps docker
+        docker image rm $argv
     end
-    function dit
-        docker image tag
+    function dit --wraps docker
+        docker image tag $argv
     end
-    function dlo
-        docker container logs
+    function dlo --wraps docker
+        docker container logs $argv
     end
-    function dn
-        dotnet new
+    function dn --wraps docker
+        dotnet new $argv
     end
-    function dnc
-        docker network create
+    function dnc --wraps docker
+        docker network create $argv
     end
-    function dncn
-        docker network connect
+    function dncn --wraps docker
+        docker network connect $argv
     end
-    function dndcn
-        docker network disconnect
+    function dndcn --wraps docker
+        docker network disconnect $argv
     end
-    function dng
-        dotnet nuget
+    function dng --wraps docker
+        dotnet nuget $argv
     end
-    function dni
-        docker network inspect
+    function dni --wraps docker
+        docker network inspect $argv
     end
-    function dnls
-        docker network ls
+    function dnls --wraps docker
+        docker network ls $argv
     end
-    function dnrm
-        docker network rm
+    function dnrm --wraps docker
+        docker network rm $argv
     end
-    function dp
-        dotnet pack
+    function dp --wraps docker
+        dotnet pack $argv
     end
-    function dpo
-        docker container port
+    function dpo --wraps docker
+        docker container port $argv
     end
-    function dps
-        docker ps
+    function dps --wraps docker
+        docker ps $argv
     end
-    function dpsa
-        docker ps -a
+    function dpsa --wraps docker
+        docker ps -a $argv
     end
-    function dpu
-        docker pull
+    function dpu --wraps docker
+        docker pull $argv
     end
-    function dr
-        docker container run
+    function dr --wraps docker
+        docker container run $argv
     end
-    function drit
-        docker container run -it
+    function drit --wraps docker
+        docker container run -it $argv
     end
-    function drm
-        docker container rm
+    function drm --wraps docker
+        docker container rm $argv
     end
-    function 'drm!'
-        docker container rm -f
+    function 'drm!' --wraps docker
+        docker container rm -f $argv
     end
-    function drs
-        docker container restart
+    function drs --wraps docker
+        docker container restart $argv
     end
-    function dst
-        docker container start
+    function dst --wraps docker
+        docker container start $argv
     end
-    function dsta
-        docker stop (docker ps -q)
+    function dsta --wraps docker
+        docker stop (docker ps -q) $argv
     end
-    function dstp
-        docker container stop
+    function dstp --wraps docker
+        docker container stop $argv
     end
-    function dtop
-        docker top
+    function dtop --wraps docker
+        docker top $argv
     end
-    function dvi
-        docker volume inspect
+    function dvi --wraps docker
+        docker volume inspect $argv
     end
-    function dvls
-        docker volume ls
+    function dvls --wraps docker
+        docker volume ls $argv
     end
-    function dvprune
-        docker volume prune
+    function dvprune --wraps docker
+        docker volume prune $argv
     end
-    function dxc
-        docker container exec
+    function dxc --wraps docker
+        docker container exec $argv
     end
-    function dxcit
-        docker container exec -it
+    function dxcit --wraps docker
+        docker container exec -it $argv
     end
 end
 
@@ -179,44 +179,44 @@ end
 
 # exa.fish
 if type -q exa
-    function l
-        exa -lhF
+    function l --wraps exa
+        exa -lhF $argv
     end
-    function lS
-        exa -1SshF
+    function lS --wraps exa
+        exa -1SshF $argv
     end
-    function la
-        exa -lAhF
+    function la --wraps exa
+        exa -lAhF $argv
     end
-    function lart
-        exa -1cartF
+    function lart --wraps exa
+        exa -1cartF $argv
     end
-    function ldot
-        exa -ld .*
+    function ldot --wraps exa
+        exa -ld .* $argv
     end
-    function ll
-        exa -l
+    function ll --wraps exa
+        exa -l $argv
     end
-    function lr
-        exa -tRhF
+    function lr --wraps exa
+        exa -tRhF $argv
     end
-    function lrt
-        exa -1crtF
+    function lrt --wraps exa
+        exa -1crtF $argv
     end
-    function ls
-        ls --color=tty
+    function ls --wraps exa
+        ls --color=tty $argv
     end
-    function lsa
-        ls -lah
+    function lsa --wraps exa
+        ls -lah $argv
     end
-    function lsn
-        exa -1
+    function lsn --wraps exa
+        exa -1 $argv
     end
-    function lsr
-        exa -lARhF
+    function lsr --wraps exa
+        exa -lARhF $argv
     end
-    function lt
-        exa -lthF
+    function lt --wraps exa
+        exa -lthF $argv
     end
 end
 
@@ -224,11 +224,11 @@ end
 
 # gh.fish
 if type -q gh
-    function gh-create
-        gh repo create --public --source=. --remote=origin && git push -u --all && gh browse
+    function gh-create --wraps gh
+        gh repo create --public --source=. --remote=origin && git push -u --all && gh browse $argv
     end
-    function gh-create-private
-        gh repo create --private --source=. --remote=origin && git push -u --all && gh browse
+    function gh-create-private --wraps gh
+        gh repo create --private --source=. --remote=origin && git push -u --all && gh browse $argv
     end
 end
 
@@ -236,542 +236,542 @@ end
 
 # git.fish
 if type -q git
-    function g
-        git
+    function g --wraps git
+        git $argv
     end
-    function ga
-        git add
+    function ga --wraps git
+        git add $argv
     end
-    function gaa
-        git add --all
+    function gaa --wraps git
+        git add --all $argv
     end
-    function gam
-        git am
+    function gam --wraps git
+        git am $argv
     end
-    function gama
-        git am --abort
+    function gama --wraps git
+        git am --abort $argv
     end
-    function gamc
-        git am --continue
+    function gamc --wraps git
+        git am --continue $argv
     end
-    function gams
-        git am --skip
+    function gams --wraps git
+        git am --skip $argv
     end
-    function gamscp
-        git am --show-current-patch
+    function gamscp --wraps git
+        git am --show-current-patch $argv
     end
-    function gap
-        git apply
+    function gap --wraps git
+        git apply $argv
     end
-    function gapa
-        git add --patch
+    function gapa --wraps git
+        git add --patch $argv
     end
-    function gapt
-        git apply --3way
+    function gapt --wraps git
+        git apply --3way $argv
     end
-    function gau
-        git add --update
+    function gau --wraps git
+        git add --update $argv
     end
-    function gav
-        git add --verbose
+    function gav --wraps git
+        git add --verbose $argv
     end
-    function gb
-        git branch
+    function gb --wraps git
+        git branch $argv
     end
-    function gbD
-        git branch --delete --force
+    function gbD --wraps git
+        git branch --delete --force $argv
     end
-    function gba
-        git branch --all
+    function gba --wraps git
+        git branch --all $argv
     end
-    function gbd
-        git branch --delete
+    function gbd --wraps git
+        git branch --delete $argv
     end
-    function gbl
-        git blame -w
+    function gbl --wraps git
+        git blame -w $argv
     end
-    function gbm
-        git branch --move
+    function gbm --wraps git
+        git branch --move $argv
     end
-    function gbnm
-        git branch --no-merged
+    function gbnm --wraps git
+        git branch --no-merged $argv
     end
-    function gbr
-        git branch --remote
+    function gbr --wraps git
+        git branch --remote $argv
     end
-    function gbs
-        git bisect
+    function gbs --wraps git
+        git bisect $argv
     end
-    function gbsb
-        git bisect bad
+    function gbsb --wraps git
+        git bisect bad $argv
     end
-    function gbsg
-        git bisect good
+    function gbsg --wraps git
+        git bisect good $argv
     end
-    function gbsn
-        git bisect new
+    function gbsn --wraps git
+        git bisect new $argv
     end
-    function gbso
-        git bisect old
+    function gbso --wraps git
+        git bisect old $argv
     end
-    function gbsr
-        git bisect reset
+    function gbsr --wraps git
+        git bisect reset $argv
     end
-    function gbss
-        git bisect start
+    function gbss --wraps git
+        git bisect start $argv
     end
-    function gc
-        git commit --verbose
+    function gc --wraps git
+        git commit --verbose $argv
     end
-    function 'gc!'
-        git commit --verbose --amend
+    function 'gc!' --wraps git
+        git commit --verbose --amend $argv
     end
-    function gcB
-        git checkout -B
+    function gcB --wraps git
+        git checkout -B $argv
     end
-    function gca
-        git commit --verbose --all
+    function gca --wraps git
+        git commit --verbose --all $argv
     end
-    function 'gca!'
-        git commit --verbose --all --amend
+    function 'gca!' --wraps git
+        git commit --verbose --all --amend $argv
     end
-    function gcam
-        git commit --all --message
+    function gcam --wraps git
+        git commit --all --message $argv
     end
-    function 'gcan!'
-        git commit --verbose --all --no-edit --amend
+    function 'gcan!' --wraps git
+        git commit --verbose --all --no-edit --amend $argv
     end
-    function 'gcann!'
-        git commit --verbose --all --date=now --no-edit --amend
+    function 'gcann!' --wraps git
+        git commit --verbose --all --date=now --no-edit --amend $argv
     end
-    function 'gcans!'
-        git commit --verbose --all --signoff --no-edit --amend
+    function 'gcans!' --wraps git
+        git commit --verbose --all --signoff --no-edit --amend $argv
     end
-    function gcas
-        git commit --all --signoff
+    function gcas --wraps git
+        git commit --all --signoff $argv
     end
-    function gcasm
-        git commit --all --signoff --message
+    function gcasm --wraps git
+        git commit --all --signoff --message $argv
     end
-    function gcb
-        git checkout -b
+    function gcb --wraps git
+        git checkout -b $argv
     end
-    function gcf
-        git config --list
+    function gcf --wraps git
+        git config --list $argv
     end
-    function gcl
-        git clone --recurse-submodules
+    function gcl --wraps git
+        git clone --recurse-submodules $argv
     end
-    function gclean
-        git clean --interactive -d
+    function gclean --wraps git
+        git clean --interactive -d $argv
     end
-    function gcmsg
-        git commit --message
+    function gcmsg --wraps git
+        git commit --message $argv
     end
-    function 'gcn!'
-        git commit --verbose --no-edit --amend
+    function 'gcn!' --wraps git
+        git commit --verbose --no-edit --amend $argv
     end
-    function gco
-        git checkout
+    function gco --wraps git
+        git checkout $argv
     end
-    function gcor
-        git checkout --recurse-submodules
+    function gcor --wraps git
+        git checkout --recurse-submodules $argv
     end
-    function gcount
-        git shortlog --summary --numbered
+    function gcount --wraps git
+        git shortlog --summary --numbered $argv
     end
-    function gcp
-        git cherry-pick
+    function gcp --wraps git
+        git cherry-pick $argv
     end
-    function gcpa
-        git cherry-pick --abort
+    function gcpa --wraps git
+        git cherry-pick --abort $argv
     end
-    function gcpc
-        git cherry-pick --continue
+    function gcpc --wraps git
+        git cherry-pick --continue $argv
     end
-    function gcs
-        git commit --gpg-sign
+    function gcs --wraps git
+        git commit --gpg-sign $argv
     end
-    function gcsm
-        git commit --signoff --message
+    function gcsm --wraps git
+        git commit --signoff --message $argv
     end
-    function gcss
-        git commit --gpg-sign --signoff
+    function gcss --wraps git
+        git commit --gpg-sign --signoff $argv
     end
-    function gcssm
-        git commit --gpg-sign --signoff --message
+    function gcssm --wraps git
+        git commit --gpg-sign --signoff --message $argv
     end
-    function gd
-        git diff
+    function gd --wraps git
+        git diff $argv
     end
-    function gdca
-        git diff --cached
+    function gdca --wraps git
+        git diff --cached $argv
     end
-    function gdct
-        git describe --tags (git rev-list --tags --max-count=1)
+    function gdct --wraps git
+        git describe --tags (git rev-list --tags --max-count=1) $argv
     end
-    function gdcw
-        git diff --cached --word-diff
+    function gdcw --wraps git
+        git diff --cached --word-diff $argv
     end
-    function gds
-        git diff --staged
+    function gds --wraps git
+        git diff --staged $argv
     end
-    function gdt
-        git diff-tree --no-commit-id --name-only -r
+    function gdt --wraps git
+        git diff-tree --no-commit-id --name-only -r $argv
     end
-    function gdup
-        git diff @{upstream}
+    function gdup --wraps git
+        git diff @{upstream} $argv
     end
-    function gdw
-        git diff --word-diff
+    function gdw --wraps git
+        git diff --word-diff $argv
     end
-    function gf
-        git fetch
+    function gf --wraps git
+        git fetch $argv
     end
-    function gfa
-        git fetch --all --prune --jobs=10
+    function gfa --wraps git
+        git fetch --all --prune --jobs=10 $argv
     end
-    function gfg
-        git ls-files | grep
+    function gfg --wraps git
+        git ls-files | grep $argv
     end
-    function gfo
-        git fetch origin
+    function gfo --wraps git
+        git fetch origin $argv
     end
-    function gg
-        git gui citool
+    function gg --wraps git
+        git gui citool $argv
     end
-    function gga
-        git gui citool --amend
+    function gga --wraps git
+        git gui citool --amend $argv
     end
-    function ggpull
-        git pull origin "(git branch --show-current)"
+    function ggpull --wraps git
+        git pull origin "(git branch --show-current)" $argv
     end
-    function ggpur
-        ggu
+    function ggpur --wraps git
+        ggu $argv
     end
-    function ggpush
-        git push origin "(git branch --show-current)"
+    function ggpush --wraps git
+        git push origin "(git branch --show-current)" $argv
     end
-    function ggsup
-        git branch --set-upstream-to=origin/(git branch --show-current)
+    function ggsup --wraps git
+        git branch --set-upstream-to=origin/(git branch --show-current) $argv
     end
-    function ghh
-        git help
+    function ghh --wraps git
+        git help $argv
     end
-    function gi
-        git-ignore
+    function gi --wraps git
+        git-ignore $argv
     end
-    function gignore
-        git update-index --assume-unchanged
+    function gignore --wraps git
+        git update-index --assume-unchanged $argv
     end
-    function gignored
-        git ls-files -v | grep "^[[:lower:]]"
+    function gignored --wraps git
+        git ls-files -v | grep "^[[:lower:]]" $argv
     end
-    function gl
-        git pull
+    function gl --wraps git
+        git pull $argv
     end
-    function glg
-        git log --stat
+    function glg --wraps git
+        git log --stat $argv
     end
-    function glgg
-        git log --graph
+    function glgg --wraps git
+        git log --graph $argv
     end
-    function glgga
-        git log --graph --decorate --all
+    function glgga --wraps git
+        git log --graph --decorate --all $argv
     end
-    function glgm
-        git log --graph --max-count=10
+    function glgm --wraps git
+        git log --graph --max-count=10 $argv
     end
-    function glgp
-        git log --stat --patch
+    function glgp --wraps git
+        git log --stat --patch $argv
     end
-    function glo
-        git log --oneline --decorate
+    function glo --wraps git
+        git log --oneline --decorate $argv
     end
-    function globurl
-        noglob urlglobber
+    function globurl --wraps git
+        noglob urlglobber $argv
     end
-    function glod
-        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset"
+    function glod --wraps git
+        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" $argv
     end
-    function glods
-        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short
+    function glods --wraps git
+        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset" --date=short $argv
     end
-    function glog
-        git log --oneline --decorate --graph
+    function glog --wraps git
+        git log --oneline --decorate --graph $argv
     end
-    function gloga
-        git log --oneline --decorate --graph --all
+    function gloga --wraps git
+        git log --oneline --decorate --graph --all $argv
     end
-    function glol
-        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"
+    function glol --wraps git
+        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" $argv
     end
-    function glola
-        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --all
+    function glola --wraps git
+        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --all $argv
     end
-    function glols
-        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --stat
+    function glols --wraps git
+        git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --stat $argv
     end
-    function glp
-        _git_log_prettily
+    function glp --wraps git
+        _git_log_prettily $argv
     end
-    function gluc
-        git pull upstream (git branch --show-current)
+    function gluc --wraps git
+        git pull upstream (git branch --show-current) $argv
     end
-    function gm
-        git merge
+    function gm --wraps git
+        git merge $argv
     end
-    function gma
-        git merge --abort
+    function gma --wraps git
+        git merge --abort $argv
     end
-    function gmc
-        git merge --continue
+    function gmc --wraps git
+        git merge --continue $argv
     end
-    function gms
-        git merge --squash
+    function gms --wraps git
+        git merge --squash $argv
     end
-    function gmtl
-        git mergetool --no-prompt
+    function gmtl --wraps git
+        git mergetool --no-prompt $argv
     end
-    function gmtlvim
-        git mergetool --no-prompt --tool=vimdiff
+    function gmtlvim --wraps git
+        git mergetool --no-prompt --tool=vimdiff $argv
     end
-    function gp
-        git push
+    function gp --wraps git
+        git push $argv
     end
-    function gpd
-        git push --dry-run
+    function gpd --wraps git
+        git push --dry-run $argv
     end
-    function gpf
-        git push --force-with-lease --force-if-includes
+    function gpf --wraps git
+        git push --force-with-lease --force-if-includes $argv
     end
-    function 'gpf!'
-        git push --force
+    function 'gpf!' --wraps git
+        git push --force $argv
     end
-    function gpoat
-        git push origin --all && git push origin --tags
+    function gpoat --wraps git
+        git push origin --all && git push origin --tags $argv
     end
-    function gpod
-        git push origin --delete
+    function gpod --wraps git
+        git push origin --delete $argv
     end
-    function gpr
-        git pull --rebase
+    function gpr --wraps git
+        git pull --rebase $argv
     end
-    function gpra
-        git pull --rebase --autostash
+    function gpra --wraps git
+        git pull --rebase --autostash $argv
     end
-    function gprav
-        git pull --rebase --autostash -v
+    function gprav --wraps git
+        git pull --rebase --autostash -v $argv
     end
-    function gpristine
-        git reset --hard && git clean --force -dfx
+    function gpristine --wraps git
+        git reset --hard && git clean --force -dfx $argv
     end
-    function gprv
-        git pull --rebase -v
+    function gprv --wraps git
+        git pull --rebase -v $argv
     end
-    function gpsup
-        git push --set-upstream origin (git branch --show-current)
+    function gpsup --wraps git
+        git push --set-upstream origin (git branch --show-current) $argv
     end
-    function gpsupf
-        git push --set-upstream origin (git branch --show-current) --force-with-lease --force-if-includes
+    function gpsupf --wraps git
+        git push --set-upstream origin (git branch --show-current) --force-with-lease --force-if-includes $argv
     end
-    function gpu
-        git push upstream
+    function gpu --wraps git
+        git push upstream $argv
     end
-    function gpv
-        git push --verbose
+    function gpv --wraps git
+        git push --verbose $argv
     end
-    function gr
-        git remote
+    function gr --wraps git
+        git remote $argv
     end
-    function gra
-        git remote add
+    function gra --wraps git
+        git remote add $argv
     end
-    function grb
-        git rebase
+    function grb --wraps git
+        git rebase $argv
     end
-    function grba
-        git rebase --abort
+    function grba --wraps git
+        git rebase --abort $argv
     end
-    function grbc
-        git rebase --continue
+    function grbc --wraps git
+        git rebase --continue $argv
     end
-    function grbi
-        git rebase --interactive
+    function grbi --wraps git
+        git rebase --interactive $argv
     end
-    function grbo
-        git rebase --onto
+    function grbo --wraps git
+        git rebase --onto $argv
     end
-    function grbs
-        git rebase --skip
+    function grbs --wraps git
+        git rebase --skip $argv
     end
-    function grep
-        rg
+    function grep --wraps git
+        rg $argv
     end
-    function grev
-        git revert
+    function grev --wraps git
+        git revert $argv
     end
-    function greva
-        git revert --abort
+    function greva --wraps git
+        git revert --abort $argv
     end
-    function grevc
-        git revert --continue
+    function grevc --wraps git
+        git revert --continue $argv
     end
-    function grf
-        git reflog
+    function grf --wraps git
+        git reflog $argv
     end
-    function grh
-        git reset
+    function grh --wraps git
+        git reset $argv
     end
-    function grhh
-        git reset --hard
+    function grhh --wraps git
+        git reset --hard $argv
     end
-    function grhk
-        git reset --keep
+    function grhk --wraps git
+        git reset --keep $argv
     end
-    function grhs
-        git reset --soft
+    function grhs --wraps git
+        git reset --soft $argv
     end
-    function grm
-        git rm
+    function grm --wraps git
+        git rm $argv
     end
-    function grmc
-        git rm --cached
+    function grmc --wraps git
+        git rm --cached $argv
     end
-    function grmv
-        git remote rename
+    function grmv --wraps git
+        git remote rename $argv
     end
-    function groh
-        git reset origin/(git branch --show-current) --hard
+    function groh --wraps git
+        git reset origin/(git branch --show-current) --hard $argv
     end
-    function grrm
-        git remote remove
+    function grrm --wraps git
+        git remote remove $argv
     end
-    function grs
-        git restore
+    function grs --wraps git
+        git restore $argv
     end
-    function grset
-        git remote set-url
+    function grset --wraps git
+        git remote set-url $argv
     end
-    function grss
-        git restore --source
+    function grss --wraps git
+        git restore --source $argv
     end
-    function grst
-        git restore --staged
+    function grst --wraps git
+        git restore --staged $argv
     end
-    function grt
-        cd "(git rev-parse --show-toplevel || echo .)"
+    function grt --wraps git
+        cd "(git rev-parse --show-toplevel || echo .)" $argv
     end
-    function gru
-        git reset --
+    function gru --wraps git
+        git reset -- $argv
     end
-    function grup
-        git remote update
+    function grup --wraps git
+        git remote update $argv
     end
-    function grv
-        git remote --verbose
+    function grv --wraps git
+        git remote --verbose $argv
     end
-    function gsb
-        git status --short --branch
+    function gsb --wraps git
+        git status --short --branch $argv
     end
-    function gsd
-        git svn dcommit
+    function gsd --wraps git
+        git svn dcommit $argv
     end
-    function gsh
-        git show
+    function gsh --wraps git
+        git show $argv
     end
-    function gsi
-        git submodule init
+    function gsi --wraps git
+        git submodule init $argv
     end
-    function gsps
-        git show --pretty=short --show-signature
+    function gsps --wraps git
+        git show --pretty=short --show-signature $argv
     end
-    function gsr
-        git svn rebase
+    function gsr --wraps git
+        git svn rebase $argv
     end
-    function gss
-        git status --short
+    function gss --wraps git
+        git status --short $argv
     end
-    function gst
-        git status
+    function gst --wraps git
+        git status $argv
     end
-    function gsta
-        git stash push
+    function gsta --wraps git
+        git stash push $argv
     end
-    function gstaa
-        git stash apply
+    function gstaa --wraps git
+        git stash apply $argv
     end
-    function gstall
-        git stash --all
+    function gstall --wraps git
+        git stash --all $argv
     end
-    function gstc
-        git stash clear
+    function gstc --wraps git
+        git stash clear $argv
     end
-    function gstd
-        git stash drop
+    function gstd --wraps git
+        git stash drop $argv
     end
-    function gstl
-        git stash list
+    function gstl --wraps git
+        git stash list $argv
     end
-    function gstp
-        git stash pop
+    function gstp --wraps git
+        git stash pop $argv
     end
-    function gsts
-        git stash show --patch
+    function gsts --wraps git
+        git stash show --patch $argv
     end
-    function gstu
-        gsta --include-untracked
+    function gstu --wraps git
+        gsta --include-untracked $argv
     end
-    function gsu
-        git submodule update
+    function gsu --wraps git
+        git submodule update $argv
     end
-    function gsw
-        git switch
+    function gsw --wraps git
+        git switch $argv
     end
-    function gswc
-        git switch --create
+    function gswc --wraps git
+        git switch --create $argv
     end
-    function gta
-        git tag --annotate
+    function gta --wraps git
+        git tag --annotate $argv
     end
-    function gtas
-        git tag --annotate --sign
+    function gtas --wraps git
+        git tag --annotate --sign $argv
     end
-    function gtl --description 'List git tags sorted by version'
-        git tag --sort=-v:refname -n --list "$argv[1]*"
+    function gtl --description 'List git tags sorted by version' --wraps git
+        git tag --sort=-v:refname -n --list "$argv[1]*" $argv
     end
-    function gts
-        git tag --sign
+    function gts --wraps git
+        git tag --sign $argv
     end
-    function gtv
-        git tag | sort -V
+    function gtv --wraps git
+        git tag | sort -V $argv
     end
-    function gunignore
-        git update-index --no-assume-unchanged
+    function gunignore --wraps git
+        git update-index --no-assume-unchanged $argv
     end
-    function gunwip
-        git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1
+    function gunwip --wraps git
+        git rev-list --max-count=1 --format="%s" HEAD | grep -q "\--wip--" && git reset HEAD~1 $argv
     end
-    function gwch
-        git whatchanged -p --abbrev-commit --pretty=medium
+    function gwch --wraps git
+        git whatchanged -p --abbrev-commit --pretty=medium $argv
     end
-    function gwipe
-        git reset --hard && git clean --force -df
+    function gwipe --wraps git
+        git reset --hard && git clean --force -df $argv
     end
-    function gwt
-        git worktree
+    function gwt --wraps git
+        git worktree $argv
     end
-    function gwta
-        git worktree add
+    function gwta --wraps git
+        git worktree add $argv
     end
-    function gwtls
-        git worktree list
+    function gwtls --wraps git
+        git worktree list $argv
     end
-    function gwtmv
-        git worktree move
+    function gwtmv --wraps git
+        git worktree move $argv
     end
-    function gwtrm
-        git worktree remove
+    function gwtrm --wraps git
+        git worktree remove $argv
     end
 end
 
@@ -779,68 +779,68 @@ end
 
 # pacman.fish
 if type -q pacman
-    function pacfiles
-        pacman -F
+    function pacfiles --wraps pacman
+        pacman -F $argv
     end
-    function pacfileupg
-        sudo pacman -Fy
+    function pacfileupg --wraps pacman
+        sudo pacman -Fy $argv
     end
-    function pacin
-        sudo pacman -S
+    function pacin --wraps pacman
+        sudo pacman -S $argv
     end
-    function pacins
-        sudo pacman -U
+    function pacins --wraps pacman
+        sudo pacman -U $argv
     end
-    function pacinsd
-        sudo pacman -S --asdeps
+    function pacinsd --wraps pacman
+        sudo pacman -S --asdeps $argv
     end
-    function paclean
-        sudo pacman -Sc
+    function paclean --wraps pacman
+        sudo pacman -Sc $argv
     end
-    function pacloc
-        pacman -Qi
+    function pacloc --wraps pacman
+        pacman -Qi $argv
     end
-    function paclocs
-        pacman -Qs
+    function paclocs --wraps pacman
+        pacman -Qs $argv
     end
-    function paclr
-        sudo pacman -Scc
+    function paclr --wraps pacman
+        sudo pacman -Scc $argv
     end
-    function pacls
-        pacman -Ql
+    function pacls --wraps pacman
+        pacman -Ql $argv
     end
-    function paclsorphans
-        sudo pacman -Qdt
+    function paclsorphans --wraps pacman
+        sudo pacman -Qdt $argv
     end
-    function pacmanallkeys
-        sudo pacman-key --refresh-keys
+    function pacmanallkeys --wraps pacman
+        sudo pacman-key --refresh-keys $argv
     end
-    function pacmir
-        sudo pacman -Syy
+    function pacmir --wraps pacman
+        sudo pacman -Syy $argv
     end
-    function pacown
-        pacman -Qo
+    function pacown --wraps pacman
+        pacman -Qo $argv
     end
-    function pacre
-        sudo pacman -R
+    function pacre --wraps pacman
+        sudo pacman -R $argv
     end
-    function pacrem
-        sudo pacman -Rns
+    function pacrem --wraps pacman
+        sudo pacman -Rns $argv
     end
-    function pacrep
-        pacman -Si
+    function pacrep --wraps pacman
+        pacman -Si $argv
     end
-    function pacreps
-        pacman -Ss
+    function pacreps --wraps pacman
+        pacman -Ss $argv
     end
-    function pacrmorphans
-        sudo pacman -Rs (pacman -Qtdq)
+    function pacrmorphans --wraps pacman
+        sudo pacman -Rs (pacman -Qtdq) $argv
     end
-    function pacupd
-        sudo pacman -Sy
+    function pacupd --wraps pacman
+        sudo pacman -Sy $argv
     end
-    function pacupg
-        sudo pacman -Syu
+    function pacupg --wraps pacman
+        sudo pacman -Syu $argv
     end
 end
 
@@ -848,20 +848,20 @@ end
 
 # pre_commit.fish
 if type -q pre-commit
-    function prc
-        pre-commit
+    function prc --wraps pre-commit
+        pre-commit $argv
     end
-    function prcau
-        pre-commit autoupdate
+    function prcau --wraps pre-commit
+        pre-commit autoupdate $argv
     end
-    function prcr
-        pre-commit run
+    function prcr --wraps pre-commit
+        pre-commit run $argv
     end
-    function prcra
-        pre-commit run --all-files
+    function prcra --wraps pre-commit
+        pre-commit run --all-files $argv
     end
-    function prcrf
-        pre-commit run --files
+    function prcrf --wraps pre-commit
+        pre-commit run --files $argv
     end
 end
 
@@ -869,17 +869,17 @@ end
 
 # rsync.fish
 if type -q rsync
-    function rsync-copy
-        rsync -avz --progress -h
+    function rsync-copy --wraps rsync
+        rsync -avz --progress -h $argv
     end
-    function rsync-move
-        rsync -avz --progress -h --remove-source-files
+    function rsync-move --wraps rsync
+        rsync -avz --progress -h --remove-source-files $argv
     end
-    function rsync-synchronize
-        rsync -avzu --delete --progress -h
+    function rsync-synchronize --wraps rsync
+        rsync -avzu --delete --progress -h $argv
     end
-    function rsync-update
-        rsync -avzu --progress -h
+    function rsync-update --wraps rsync
+        rsync -avzu --progress -h $argv
     end
 end
 
@@ -887,58 +887,58 @@ end
 
 # yay.fish
 if type -q yay
-    function yaclean
-        yay -Sc
+    function yaclean --wraps yay
+        yay -Sc $argv
     end
-    function yaclr
-        yay -Scc
+    function yaclr --wraps yay
+        yay -Scc $argv
     end
-    function yaconf
-        yay -Pg
+    function yaconf --wraps yay
+        yay -Pg $argv
     end
-    function yain
-        yay -S
+    function yain --wraps yay
+        yay -S $argv
     end
-    function yains
-        yay -U
+    function yains --wraps yay
+        yay -U $argv
     end
-    function yainsd
-        yay -S --asdeps
+    function yainsd --wraps yay
+        yay -S --asdeps $argv
     end
-    function yaloc
-        yay -Qi
+    function yaloc --wraps yay
+        yay -Qi $argv
     end
-    function yalocs
-        yay -Qs
+    function yalocs --wraps yay
+        yay -Qs $argv
     end
-    function yalst
-        yay -Qe
+    function yalst --wraps yay
+        yay -Qe $argv
     end
-    function yamir
-        yay -Syy
+    function yamir --wraps yay
+        yay -Syy $argv
     end
-    function yaorph
-        yay -Qtd
+    function yaorph --wraps yay
+        yay -Qtd $argv
     end
-    function yare
-        yay -R
+    function yare --wraps yay
+        yay -R $argv
     end
-    function yarem
-        yay -Rns
+    function yarem --wraps yay
+        yay -Rns $argv
     end
-    function yarep
-        yay -Si
+    function yarep --wraps yay
+        yay -Si $argv
     end
-    function yareps
-        yay -Ss
+    function yareps --wraps yay
+        yay -Ss $argv
     end
-    function yasu
-        yay -Syu --noconfirm
+    function yasu --wraps yay
+        yay -Syu --noconfirm $argv
     end
-    function yaupd
-        yay -Sy
+    function yaupd --wraps yay
+        yay -Sy $argv
     end
     function yaupg
-        yay -Syu
+        yay --wraps yay -Syu $argvaps yay -Syu
     end
 end
