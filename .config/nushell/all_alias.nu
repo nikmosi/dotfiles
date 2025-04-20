@@ -1,0 +1,9 @@
+source /home/nik/.dotfiles/.config/nushell/aliases/common.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/docker.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/exa.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/gh.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/git.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/pacman.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/pre-commit.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/rsync.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/yay.nu
