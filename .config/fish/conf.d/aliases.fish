@@ -1,6 +1,11 @@
 function gs --wraps gs
 
 end
+if type -q tmux
+    function t --wraps sesh
+        sesh connect .
+    end
+end
 # docker.fish
 if type -q docker
     function dbl --wraps "docker build"

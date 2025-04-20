@@ -34,6 +34,7 @@ x-scheme-handler/okular=pdf-view-opener.desktop;
 x-scheme-handler/postman=Postman.desktop;
 x-scheme-handler/tg=userapp-AyuGram Desktop-QQTK02.desktop
 x-scheme-handler/tonsite=userapp-AyuGram Desktop-KYFK02.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 inode/directory=thunar.desktop;
