@@ -1,6 +1,14 @@
 # git
+def git_add [...files: string@complete_git_files] {
+  ^git add ...$files
+}
+
+def complete_git_files [] {
+  ^git status --short | lines | where ($it | str length) > 3 | each { |line| $line | str substring 3.. }
+}
+
 alias g = git
-alias ga = git add
+alias ga = git_add
 alias gaa = git add --all
 alias gam = git am
 alias gama = git am --abort
