@@ -7,3 +7,6 @@
 [submodule ".config/fish/repo_plugin/git-fuzzy"]
 	path = .config/fish/repo_plugin/git-fuzzy
 	url = https://github.com/bigH/git-fuzzy.git
+[submodule ".config/nushell/modules/nu_scripts"]
+	path = .config/nushell/modules/nu_scripts
+	url = https://github.com/nushell/nu_scripts
