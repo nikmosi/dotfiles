@@ -203,3 +203,18 @@ $env.config = {
   menus: [
   ]
 }
+
+const custom_completions = ($base | path join ./modules/nu_scripts/custom-completions/)
+
+use ($custom_completions | path join "git/git-completions.nu") *
+use ($custom_completions | path join "ssh/ssh-completions.nu") *
+use ($custom_completions | path join "bat/bat-completions.nu") *
+use ($custom_completions | path join "gh/gh-completions.nu") *
+use ($custom_completions | path join "docker/docker-completions.nu") *
+use ($custom_completions | path join "uv/uv-completions.nu") *
+use ($custom_completions | path join "tar/tar-completions.nu") *
+use ($custom_completions | path join "pass/pass-completions.nu") *
+use ($custom_completions | path join "pytest/pytest-completions.nu") *
+use ($custom_completions | path join "rg/rg-completions.nu") *
+use ($custom_completions | path join "pre-commit/pre-commit-completions.nu") *
+use ($custom_completions | path join "eza/eza-completions.nu") *
