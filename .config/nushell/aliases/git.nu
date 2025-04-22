@@ -1,10 +1,28 @@
 # git
 def git_add [...files: string@complete_git_files] {
-  ^git add ...$files
+  if ($files | is-empty) {
+    git add .
+  } else {
+    git add ...$files
+  }
 }
 
 def complete_git_files [] {
-  ^git status --short | lines | where ($it | str length) > 3 | each { |line| $line | str substring 3.. }
+  {
+    options: {
+      case_sensitive: false,
+      positional: false,
+      sort: false,
+    },
+    completions: (^git status --short | lines | where ($it | str length) > 3 |
+      each { |line|
+        {
+          value: ($line | str substring 3..)
+          description: ($line | str substring 0..2 | str replace ' ' '.')
+        }
+      }
+    )
+  }
 }
 
 alias g = git
