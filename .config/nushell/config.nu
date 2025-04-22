@@ -213,3 +213,4 @@ use ($custom_completions | path join "pytest/pytest-completions.nu") *
 use ($custom_completions | path join "rg/rg-completions.nu") *
 use ($custom_completions | path join "pre-commit/pre-commit-completions.nu") *
 use ($custom_completions | path join "eza/eza-completions.nu") *
+use ($custom_completions | path join "nix/nix-completions.nu") *
