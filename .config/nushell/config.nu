@@ -76,10 +76,6 @@ let fish_completer = {|spans|
     }
 }
 
-let zoxide_completer = {|spans|
-    $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
-}
-
 let carapace_completer = {|spans: list<string>|
     carapace $spans.0 nushell ...$spans
     | from json
@@ -102,7 +98,6 @@ let external_completer = {|spans|
         nu => $fish_completer
         git => $fish_completer
         asdf => $fish_completer
-        __zoxide_z | __zoxide_zi => $zoxide_completer
         _ => $carapace_completer
     } | do $in $spans
 }
