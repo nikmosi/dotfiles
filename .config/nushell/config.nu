@@ -184,7 +184,7 @@ $env.config = {
   ]
   completions: {
     case_sensitive: false # set to true to enable case-sensitive completions
-    algorithm: "fuzzy"    # prefix or fuzzy
+    algorithm: "prefix"    # prefix or fuzzy
     sort: "smart" # "smart" (alphabetical for prefix matching, fuzzy score for fuzzy matching) or "alphabetical"
     partial: true    # set this to false to prevent partial filling of the prompt
     quick: true    # set this to false to prevent auto-selecting completions when only one remains
