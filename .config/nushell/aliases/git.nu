@@ -13,6 +13,7 @@ def complete_git_files [] {
       case_sensitive: false,
       positional: false,
       sort: false,
+      algorithm: "fuzzy"    # prefix or fuzzy
     },
     completions: (^git status --short | lines | where ($it | str length) > 3 |
       each { |line|
