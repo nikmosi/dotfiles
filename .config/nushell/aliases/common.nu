@@ -1,4 +1,21 @@
 # common
+
+def expand_alias [a: string@comlete_alias] {
+  scope aliases | where name == $a
+}
+
+def comlete_alias [] {
+  {
+    completions: (scope aliases |
+    each { |line|
+      {
+        value: ($line | get name)
+        description: ($line | get expansion)
+      }
+    })
+  }
+}
+
 alias v = nvim
 alias se = sudoedit
 alias swo = nh os switch
@@ -14,9 +31,8 @@ alias rd = rmdir
 alias mv = mv -i
 alias cp = cp -i
 alias py = python
-alias rename = perl-rename
+alias prename = perl-rename
 alias sortnr = sort -n -r
 alias tt = tail -f
 alias to_clip = xclip -sel clip
-alias which = whence
 alias x = extract
