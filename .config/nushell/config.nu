@@ -66,24 +66,47 @@ let dark_theme = {
   shape_raw_string: light_purple
 }
 
-$env.config = {
-  show_banner: false
-  edit_mode:  'vi'
-  keybindings: [
-    {
-      name: edit_in_nvim
-      modifier: CONTROL
-      keycode: Char_e
-      mode: [emacs vi_normal vi_insert]
-      event: [
-        { send: OpenEditor }
-      ]
+
+let fish_completer = {|spans|
+    fish --command $"complete '--do-complete=($spans | str join ' ')'"
+    | from tsv --flexible --noheaders --no-infer
+    | rename value description
+    | update value {
+        if ($in | path exists) {$'"($in | str replace "\"" "\\\"" )"'} else {$in}
     }
-  ]
-  color_config: $dark_theme
-  menus: [
-  ]
 }
+
+let zoxide_completer = {|spans|
+    $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
+}
+
+let carapace_completer = {|spans: list<string>|
+    carapace $spans.0 nushell ...$spans
+    | from json
+    | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+}
+
+# This completer will use carapace by default
+
+let external_completer = {|spans|
+    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
+
+    let spans = if $expanded_alias != null {
+        let parts = ($expanded_alias | split row ' ')
+        $spans | skip 1 | prepend $parts
+    } else {
+        $spans
+    }
+
+    match $spans.0 {
+        nu => $fish_completer
+        git => $fish_completer
+        asdf => $fish_completer
+        __zoxide_z | __zoxide_zi => $zoxide_completer
+        _ => $carapace_completer
+    } | do $in $spans
+}
+
 
 $env.PROMPT_INDICATOR = {|| "> " }
 $env.PROMPT_INDICATOR_VI_INSERT = {|| ": " }
@@ -138,4 +161,45 @@ def tp [] {
       --preview-window 'right:55%'
       --preview 'sesh preview {}'
       )
+}
+
+
+$env.config = {
+  show_banner: false
+  edit_mode:  'vi'
+  keybindings: [
+    {
+      name: edit_in_nvim
+      modifier: CONTROL
+      keycode: Char_e
+      mode: [emacs vi_normal vi_insert]
+      event: [
+        { send: OpenEditor }
+      ]
+    }
+    {
+      name: clear_to_start
+      modifier: CONTROL
+      keycode: Char_u
+      mode: [emacs vi_normal vi_insert]
+      event: [
+        { edit: Clear }
+      ]
+    }
+  ]
+  completions: {
+    case_sensitive: false # set to true to enable case-sensitive completions
+    algorithm: "fuzzy"    # prefix or fuzzy
+    sort: "smart" # "smart" (alphabetical for prefix matching, fuzzy score for fuzzy matching) or "alphabetical"
+    partial: true    # set this to false to prevent partial filling of the prompt
+    quick: true    # set this to false to prevent auto-selecting completions when only one remains
+    external: {
+      enable: true
+      completer: $external_completer
+    }
+    use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
+  }
+  color_config: $dark_theme
+  menus: [
+  ]
 }
