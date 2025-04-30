@@ -1,6 +1,6 @@
 [Default Applications]
 application/json=firefox.desktop;
-application/pdf=firefox.desktop;sioyek.desktop;
+application/pdf=org.pwmt.zathura.desktop;firefox.desktop;sioyek.desktop;
 application/vnd.mozilla.xul+xml=firefox.desktop;
 application/x-xdg-protocol-tg=org.telegram.desktop.desktop;
 application/x-xpinstall=firefox.desktop;
@@ -28,15 +28,15 @@ modrinth=modrinth-app-handler.desktop;
 text/html=firefox.desktop;
 text/mml=firefox.desktop;
 text/xml=firefox.desktop;
+x-scheme-handler/discord=vesktop.desktop;
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 x-scheme-handler/okular=pdf-view-opener.desktop;
 x-scheme-handler/postman=Postman.desktop;
-x-scheme-handler/tg=userapp-AyuGram Desktop-QQTK02.desktop
-x-scheme-handler/tonsite=userapp-AyuGram Desktop-KYFK02.desktop
-x-scheme-handler/discord=vesktop.desktop
-
+x-scheme-handler/tg=userapp-AyuGram Desktop-QQTK02.desktop;
+x-scheme-handler/tonsite=userapp-AyuGram Desktop-KYFK02.desktop;
 [Added Associations]
+application/pdf=org.pwmt.zathura.desktop;zathura.desktop;
 inode/directory=thunar.desktop;
 x-scheme-handler/tg=userapp-AyuGram Desktop-INCJK2.desktop;userapp-AyuGram Desktop-QQTK02.desktop;
 x-scheme-handler/tonsite=userapp-AyuGram Desktop-9PA1S2.desktop;userapp-AyuGram Desktop-KYFK02.desktop;

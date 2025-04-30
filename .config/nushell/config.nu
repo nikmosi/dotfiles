@@ -96,27 +96,17 @@ let external_completer = {|spans|
 
     match $spans.0 {
         nu => $fish_completer
-        git => $fish_completer
         asdf => $fish_completer
         _ => $carapace_completer
     } | do $in $spans
 }
 
-
-$env.PROMPT_INDICATOR = {|| "> " }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| ": " }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| "> " }
-$env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
-
 const base = ($nu.config-path | path dirname)
 const allias_dir = ($base | path join "aliases")
+const custom_completions = ($base | path join ./modules/nu_scripts/custom-completions/)
 
 const $alias_all_file = ($base | path join "all_alias.nu")
 source $alias_all_file
-
-mkdir ($nu.data-dir | path join "vendor/autoload")
-starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
-zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
 
 
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
@@ -156,6 +146,10 @@ def tp [] {
       --preview-window 'right:55%'
       --preview 'sesh preview {}'
       )
+}
+
+def comlete_uv [] {
+  use ($custom_completions | path join "uv/uv-completions.nu") *
 }
 
 
@@ -199,14 +193,11 @@ $env.config = {
   ]
 }
 
-const custom_completions = ($base | path join ./modules/nu_scripts/custom-completions/)
-
 use ($custom_completions | path join "git/git-completions.nu") *
 use ($custom_completions | path join "ssh/ssh-completions.nu") *
 use ($custom_completions | path join "bat/bat-completions.nu") *
 use ($custom_completions | path join "gh/gh-completions.nu") *
 use ($custom_completions | path join "docker/docker-completions.nu") *
-use ($custom_completions | path join "uv/uv-completions.nu") *
 use ($custom_completions | path join "tar/tar-completions.nu") *
 use ($custom_completions | path join "pass/pass-completions.nu") *
 use ($custom_completions | path join "pytest/pytest-completions.nu") *

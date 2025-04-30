@@ -1,6 +1,6 @@
 # git
 def git_add [...files: string@complete_git_files
---patch (-u) # --patch
+--patch (-p) # --patch
 ] {
   let args = [] | append (if $patch {'--patch'} else {[]})
   if ($files | is-empty) {
