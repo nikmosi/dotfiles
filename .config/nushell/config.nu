@@ -101,8 +101,10 @@ let external_completer = {|spans|
     }
 
     match $spans.0 {
-        nu => $fish_completer
-        asdf => $fish_completer
+        nu |
+        lima |
+        nh |
+        limactl => $fish_completer
         _ => $carapace_completer
     } | do $in $spans
 }
