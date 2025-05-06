@@ -72,7 +72,13 @@ let fish_completer = {|spans|
     | from tsv --flexible --noheaders --no-infer
     | rename value description
     | update value {
-        if ($in | path exists) {$'"($in | str replace "\"" "\\\"" )"'} else {$in}
+        if ($in | path exists) {
+            $in
+            | str replace -a ' ' '\ '
+            | str replace -a '"' '\\"'
+        } else {
+            $in
+        }
     }
 }
 
