@@ -91,22 +91,24 @@ let carapace_completer = {|spans: list<string>|
 # This completer will use carapace by default
 
 let external_completer = {|spans|
-    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
+    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion | default null)
 
     let spans = if $expanded_alias != null {
-        let parts = ($expanded_alias | split row ' ')
+        let parts = ($expanded_alias | split row ' ' | get -i 0)
         $spans | skip 1 | prepend $parts
     } else {
         $spans
     }
 
-    match $spans.0 {
+    let completer = match $spans.0 {
         nu |
         lima |
         nh |
         limactl => $fish_completer
         _ => $carapace_completer
-    } | do $in $spans
+    }
+
+    do $completer $spans
 }
 
 const base = ($nu.config-path | path dirname)
