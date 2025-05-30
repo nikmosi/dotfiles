@@ -126,6 +126,10 @@ carapace _carapace nushell | save --force ($nu.cache-dir | path join "carapace/i
 
 source ($nu.cache-dir | path join "carapace/init.nu")
 
+def vf [] {
+  nvim (fd | fzf)
+}
+
 def --env take [dir: string] {
   md $dir; cd $dir
 }
