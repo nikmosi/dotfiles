@@ -190,6 +190,16 @@ $env.config = {
         { edit: Clear }
       ]
     }
+    {
+      name: reload_config
+      modifier: none
+      keycode: f5
+      mode: [emacs vi_normal vi_insert]
+      event: {
+        send: executehostcommand,
+        cmd: $"source '($nu.env-path)';source '($nu.config-path)'"
+      }
+    }
   ]
   completions: {
     case_sensitive: false # set to true to enable case-sensitive completions
@@ -219,3 +229,4 @@ use ($custom_completions | path join "rg/rg-completions.nu") *
 use ($custom_completions | path join "pre-commit/pre-commit-completions.nu") *
 use ($custom_completions | path join "eza/eza-completions.nu") *
 use ($custom_completions | path join "nix/nix-completions.nu") *
+use ($custom_completions | path join "uv/uv-completions.nu") *
