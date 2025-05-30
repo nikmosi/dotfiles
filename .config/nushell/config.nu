@@ -104,6 +104,7 @@ let external_completer = {|spans|
         nu |
         lima |
         nh |
+        ssh |
         limactl => $fish_completer
         _ => $carapace_completer
     }
@@ -204,7 +205,6 @@ $env.config = {
 }
 
 use ($custom_completions | path join "git/git-completions.nu") *
-use ($custom_completions | path join "ssh/ssh-completions.nu") *
 use ($custom_completions | path join "bat/bat-completions.nu") *
 use ($custom_completions | path join "gh/gh-completions.nu") *
 use ($custom_completions | path join "docker/docker-completions.nu") *
