@@ -1,5 +1,52 @@
 # common
 
+def vf [] {
+  nvim (fd | fzf)
+}
+
+def --env take [dir: string] {
+  md $dir; cd $dir
+}
+
+def update_alias [] {
+  const config_dir = ($nu.config-path | path dirname)
+  const allias_dir = ($config_dir | path join "aliases")
+
+  let alias_all_file =  ($config_dir | path join "all_alias.nu")
+  fd '\.nu' $allias_dir --absolute-path | split row "\n" | each {|s| 'source ' ++ $s} | save -f $alias_all_file
+}
+
+def copy [file: string] {
+  cat $file | to_clip
+}
+
+def t [] {
+  sesh connect .
+}
+
+def tp [] {
+  sesh connect (
+      sesh list --icons | fzf
+      --no-sort --ansi --border-label ' sesh ' --prompt '⚡  '
+      --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find'
+      --bind 'tab:down,btab:up'
+      --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list --icons)'
+      --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t --icons)'
+      --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c --icons)'
+      --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z --icons)'
+      --bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)'
+      --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)'
+      --preview-window 'right:55%'
+      --preview 'sesh preview {}'
+      )
+}
+
+def comlete_uv [] {
+  use ($custom_completions | path join "uv/uv-completions.nu") *
+}
+
+
+
 def expand_alias [a: string@comlete_alias] {
   scope aliases | where name == $a
 }

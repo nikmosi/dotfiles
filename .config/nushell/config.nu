@@ -1,71 +1,16 @@
+const config_dir = ($nu.config-path | path dirname)
+const custom_completions = ($config_dir | path join ./modules/nu_scripts/custom-completions/)
 
-let dark_theme = {
-  # color for nushell primitives
-  separator: white
-  leading_trailing_space_bg: { attr: n } # no fg, no bg, attr none effectively turns this off
-  header: green_bold
-  empty: blue
-  # Closures can be used to choose colors for specific values.
-  # The value (in this case, a bool) is piped into the closure.
-  # eg) {|| if $in { 'light_cyan' } else { 'light_gray' } }
-  bool: light_cyan
-  int: white
-  filesize: cyan
-  duration: white
-  date: purple
-  range: white
-  float: white
-  string: white
-  nothing: white
-  binary: white
-  cell-path: white
-  row_index: green_bold
-  record: white
-  list: white
-  block: white
-  hints: dark_gray
-  search_result: { bg: red fg: white }
-  shape_and: purple_bold
-  shape_binary: purple_bold
-  shape_block: blue_bold
-  shape_bool: light_cyan
-  shape_closure: green_bold
-  shape_custom: green
-  shape_datetime: cyan_bold
-  shape_directory: cyan
-  shape_external: cyan
-  shape_externalarg: green_bold
-  shape_external_resolved: light_yellow_bold
-  shape_filepath: cyan
-  shape_flag: blue_bold
-  shape_float: purple_bold
-  # shapes are used to change the cli syntax highlighting
-  shape_garbage: { fg: white bg: red attr: b }
-  shape_glob_interpolation: cyan_bold
-  shape_globpattern: cyan_bold
-  shape_int: purple_bold
-  shape_internalcall: cyan_bold
-  shape_keyword: cyan_bold
-  shape_list: cyan_bold
-  shape_literal: blue
-  shape_match_pattern: green
-  shape_matching_brackets: { attr: u }
-  shape_nothing: light_cyan
-  shape_operator: yellow
-  shape_or: purple_bold
-  shape_pipe: purple_bold
-  shape_range: yellow_bold
-  shape_record: cyan_bold
-  shape_redirection: purple_bold
-  shape_signature: green_bold
-  shape_string: green
-  shape_string_interpolation: cyan_bold
-  shape_table: blue_bold
-  shape_variable: purple
-  shape_vardecl: purple
-  shape_raw_string: light_purple
-}
+mkdir ($nu.cache-dir | path join "carapace")
+carapace _carapace nushell | save --force ($nu.cache-dir | path join "carapace/init.nu")
 
+mkdir ($nu.cache-dir | path join "atuin")
+atuin init nu | save --force ($nu.cache-dir | path join "atuin/init.nu")
+
+source ($nu.cache-dir | path join "carapace/init.nu")
+source ($nu.cache-dir | path join "atuin/init.nu")
+source ($config_dir | path join "all_alias.nu")
+source ($config_dir | path join "colors.nu")
 
 let fish_completer = {|spans|
     fish --command $"complete '--do-complete=($spans | str join ' ')'"
@@ -83,13 +28,32 @@ let fish_completer = {|spans|
 }
 
 let carapace_completer = {|spans: list<string>|
-    carapace $spans.0 nushell ...$spans
-    | from json
-    | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+
+    let raw = ( carapace $spans.0 nushell ...$spans | from json )
+
+    let completions = (
+        if ($raw | get value | into string | where $it =~ '^-.*ERR$' | is-empty) {
+            $raw
+        } else {
+            []
+        }
+    )
+
+    let completions_flat = (
+        $completions
+        | each {|item|
+            {
+                value: $item.value,
+                description: ($item | get -i description | default ""),
+                display: $item.display
+            }
+        }
+    )
+
+    $completions_flat
 }
 
 # This completer will use carapace by default
-
 let external_completer = {|spans|
     let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion | default null)
 
@@ -104,6 +68,7 @@ let external_completer = {|spans|
         nu |
         lima |
         nh |
+        alembic |
         ssh |
         limactl => $fish_completer
         _ => $carapace_completer
@@ -111,62 +76,6 @@ let external_completer = {|spans|
 
     do $completer $spans
 }
-
-const base = ($nu.config-path | path dirname)
-const allias_dir = ($base | path join "aliases")
-const custom_completions = ($base | path join ./modules/nu_scripts/custom-completions/)
-
-const $alias_all_file = ($base | path join "all_alias.nu")
-source $alias_all_file
-
-
-$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
-mkdir ($nu.cache-dir | path join "carapace")
-carapace _carapace nushell | save --force ($nu.cache-dir | path join "carapace/init.nu")
-
-source ($nu.cache-dir | path join "carapace/init.nu")
-
-def vf [] {
-  nvim (fd | fzf)
-}
-
-def --env take [dir: string] {
-  md $dir; cd $dir
-}
-
-def update_alias [] {
-  fd '\.nu' $allias_dir --absolute-path | split row "\n" | each {|s| 'source ' ++ $s} | save -f $alias_all_file
-}
-
-def copy [file: string] {
-  cat $file | to_clip
-}
-
-def t [] {
-  sesh connect .
-}
-
-def tp [] {
-  sesh connect (
-      sesh list --icons | fzf
-      --no-sort --ansi --border-label ' sesh ' --prompt '⚡  '
-      --header '  ^a all ^t tmux ^g configs ^x zoxide ^d tmux kill ^f find'
-      --bind 'tab:down,btab:up'
-      --bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list --icons)'
-      --bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -t --icons)'
-      --bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -c --icons)'
-      --bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -z --icons)'
-      --bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)'
-      --bind 'ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(⚡  )+reload(sesh list --icons)'
-      --preview-window 'right:55%'
-      --preview 'sesh preview {}'
-      )
-}
-
-def comlete_uv [] {
-  use ($custom_completions | path join "uv/uv-completions.nu") *
-}
-
 
 $env.config = {
   show_banner: false
@@ -200,25 +109,31 @@ $env.config = {
         cmd: $"source '($nu.env-path)';source '($nu.config-path)'"
       }
     }
+    {
+      name: atuin
+      modifier: control
+      keycode: char_r
+      mode: [emacs, vi_normal, vi_insert]
+      event: { send: executehostcommand cmd: (_atuin_search_cmd) }
+    }
   ]
   completions: {
     case_sensitive: false # set to true to enable case-sensitive completions
     algorithm: "fuzzy"    # prefix or fuzzy
     sort: "smart" # "smart" (alphabetical for prefix matching, fuzzy score for fuzzy matching) or "alphabetical"
-    partial: true    # set this to false to prevent partial filling of the prompt
+    partial: false    # set this to false to prevent partial filling of the prompt
     quick: true    # set this to false to prevent auto-selecting completions when only one remains
     external: {
       enable: true
+      max_results: 40
       completer: $external_completer
     }
     use_ls_colors: true # set this to true to enable file/path/directory completions using LS_COLORS
   }
-  color_config: $dark_theme
   menus: [
   ]
 }
 
-use ($custom_completions | path join "git/git-completions.nu") *
 use ($custom_completions | path join "bat/bat-completions.nu") *
 use ($custom_completions | path join "gh/gh-completions.nu") *
 use ($custom_completions | path join "docker/docker-completions.nu") *
@@ -229,4 +144,3 @@ use ($custom_completions | path join "rg/rg-completions.nu") *
 use ($custom_completions | path join "pre-commit/pre-commit-completions.nu") *
 use ($custom_completions | path join "eza/eza-completions.nu") *
 use ($custom_completions | path join "nix/nix-completions.nu") *
-use ($custom_completions | path join "uv/uv-completions.nu") *
