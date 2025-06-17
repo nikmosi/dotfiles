@@ -39,13 +39,16 @@ let carapace_completer = {|spans: list<string>|
         }
     )
 
+    $completions | describe  | save --force /home/nik/wow.txt
+
     let completions_flat = (
         $completions
         | each {|item|
             {
                 value: $item.value,
                 description: ($item | get -i description | default ""),
-                display: $item.display
+                display: $item.display,
+                style: ($item | get -i style | default blue),
             }
         }
     )
@@ -135,6 +138,7 @@ $env.config = {
 }
 
 use ($custom_completions | path join "bat/bat-completions.nu") *
+use ($custom_completions | path join "git/git-completions.nu") *
 use ($custom_completions | path join "gh/gh-completions.nu") *
 use ($custom_completions | path join "docker/docker-completions.nu") *
 use ($custom_completions | path join "tar/tar-completions.nu") *
