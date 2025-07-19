@@ -1,1 +1,1 @@
-/nix/store/vrmlrham14cd5a30pipkrn8kkh1bcm1k-home-manager-files/.config/mpv/scripts/recent.lua
+/nix/store/4f69hnn1xyjc4d0sjasarzgvzg7i2g13-home-manager-files/.config/mpv/scripts/recent.lua

@@ -39,8 +39,6 @@ let carapace_completer = {|spans: list<string>|
         }
     )
 
-    $completions | describe  | save --force /home/nik/wow.txt
-
     let completions_flat = (
         $completions
         | each {|item|

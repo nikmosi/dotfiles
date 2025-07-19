@@ -5,7 +5,7 @@ def vf [] {
 }
 
 def --env take [dir: string] {
-  md $dir; cd $dir
+  mkdir $dir; cd $dir
 }
 
 def update_alias [] {

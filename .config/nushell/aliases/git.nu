@@ -10,6 +10,10 @@ def git_add [...files: string@complete_git_files
   }
 }
 
+def git_diff [...files: string@complete_git_files] {
+    git diff ...$files
+}
+
 def complete_git_files [] {
   {
     options: {
@@ -84,7 +88,7 @@ alias gcs = git commit --gpg-sign
 alias gcsm = git commit --signoff --message
 alias gcss = git commit --gpg-sign --signoff
 alias gcssm = git commit --gpg-sign --signoff --message
-alias gd = git diff
+alias gd = git_diff
 alias gdca = git diff --cached
 alias gdct = git describe --tags (git rev-list --tags --max-count=1)
 alias gdcw = git diff --cached --word-diff
