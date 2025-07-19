@@ -1,5 +1,7 @@
 # common
 
+alias r = yazi
+
 def vf [] {
   nvim (fd | fzf)
 }
