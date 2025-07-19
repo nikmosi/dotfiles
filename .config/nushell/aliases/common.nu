@@ -1,6 +1,6 @@
 # common
 
-alias r = yazi
+alias r = ^yazi
 
 def vf [] {
   nvim (fd | fzf)
