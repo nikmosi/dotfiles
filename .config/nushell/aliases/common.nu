@@ -1,6 +1,7 @@
 # common
 
 alias r = ^yazi
+alias man = ^batman
 
 def vf [] {
   nvim (fd | fzf)
