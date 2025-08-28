@@ -1,16 +1,26 @@
 const config_dir = ($nu.config-path | path dirname)
 const custom_completions = ($config_dir | path join ./modules/nu_scripts/custom-completions/)
 
+source ($config_dir | path join "all_alias.nu")
+source ($config_dir | path join "colors.nu")
+
 mkdir ($nu.cache-dir | path join "carapace")
 carapace _carapace nushell | save --force ($nu.cache-dir | path join "carapace/init.nu")
+source ($nu.cache-dir | path join "carapace/init.nu")
 
 mkdir ($nu.cache-dir | path join "atuin")
 atuin init nu | save --force ($nu.cache-dir | path join "atuin/init.nu")
-
-source ($nu.cache-dir | path join "carapace/init.nu")
 source ($nu.cache-dir | path join "atuin/init.nu")
-source ($config_dir | path join "all_alias.nu")
-source ($config_dir | path join "colors.nu")
+
+# Starship
+mkdir ($nu.cache-dir | path join "starship")
+starship init nu | save --force ($nu.cache-dir | path join "starship/init.nu")
+source ($nu.cache-dir | path join "starship/init.nu")
+
+# zoxide
+mkdir ($nu.cache-dir | path join "zoxide")
+zoxide init nushell | save --force ($nu.cache-dir | path join "zoxide/init.nu")
+source ($nu.cache-dir | path join "zoxide/init.nu")
 
 let fish_completer = {|spans|
     fish --command $"complete '--do-complete=($spans | str join ' ')'"
