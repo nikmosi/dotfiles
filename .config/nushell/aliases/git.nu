@@ -14,6 +14,16 @@ def git_diff [...files: string@complete_git_files] {
     git diff ...$files
 }
 
+def gbdf --env [] {
+  let sel = (^git branch --format='%(refname:short)' | fzf --multi)
+  $sel | xargs -r git branch -d
+}
+
+def gbDf --env [] {
+  let sel = (^git branch --format='%(refname:short)' | fzf --multi )
+  $sel | xargs -r git branch -D
+}
+
 def complete_git_files [] {
   {
     options: {

@@ -1,7 +1,6 @@
 # common
 
 alias r = ^yazi
-alias man = ^batman
 
 def vf [] {
   nvim (fd | fzf)
@@ -9,14 +8,6 @@ def vf [] {
 
 def --env take [dir: string] {
   mkdir $dir; cd $dir
-}
-
-def update_alias [] {
-  const config_dir = ($nu.config-path | path dirname)
-  const allias_dir = ($config_dir | path join "aliases")
-
-  let alias_all_file =  ($config_dir | path join "all_alias.nu")
-  fd '\.nu' $allias_dir --absolute-path | split row "\n" | each {|s| 'source ' ++ $s} | save -f $alias_all_file
 }
 
 def copy [file: string] {

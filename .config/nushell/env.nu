@@ -89,6 +89,7 @@ $env.GPG_TTY = (tty)
 $env.RANGER_DEVICONS_SEPARATOR = "  "
 $env.GTK_THEME = "Numix:dark"
 $env.PASSWORD_STORE_ENABLE_EXTENSIONS = true
+$env.COMPOSE_BAKE = true
 
 $env.OPENAI_API_KEY = "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"
 $env.OPENAI_MODEL = "meta-llama/llama-3.3-8b-instruct:free" # Default to "gpt-4o"
