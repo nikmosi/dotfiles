@@ -54,9 +54,9 @@ let carapace_completer = {|spans: list<string>|
         | each {|item|
             {
                 value: $item.value,
-                description: ($item | get -i description | default ""),
+                description: ($item | get -o description | default ""),
                 display: $item.display,
-                style: ($item | get -i style | default blue),
+                style: ($item | get -o style | default blue),
             }
         }
     )
@@ -66,21 +66,21 @@ let carapace_completer = {|spans: list<string>|
 
 # This completer will use carapace by default
 let external_completer = {|spans|
-    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion | default null)
+    let expanded_alias = (scope aliases | where name == $spans.0 | get -o 0 | get -o expansion | default null)
 
     let spans = if $expanded_alias != null {
-        let parts = ($expanded_alias | split row ' ' | get -i 0)
+        let parts = ($expanded_alias | split row ' ' | get -o 0)
         $spans | skip 1 | prepend $parts
     } else {
         $spans
     }
 
     let completer = match $spans.0 {
-        nu |
-        lima |
-        nh |
-        alembic |
-        ssh |
+        nu => $fish_completer
+        lima => $fish_completer
+        nh => $fish_completer
+        alembic => $fish_completer
+        ssh => $fish_completer
         limactl => $fish_completer
         _ => $carapace_completer
     }

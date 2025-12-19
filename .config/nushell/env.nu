@@ -22,27 +22,27 @@ $env.FZF_DEFAULT_OPTS = "--color=fg:#f8f8f2,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#
 # - converted from a value back to a string when running external commands (to_string)
 # Note: The conversions happen *after* config.nu is loaded
 $env.ENV_CONVERSIONS = {
-    "PATH": {
-        from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-        to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-    }
-    "Path": {
-        from_string: { |s| $s | split row (char esep) | path expand --no-symlink }
-        to_string: { |v| $v | path expand --no-symlink | str join (char esep) }
-    }
+  "PATH": {
+    from_string: {|s| $s | split row (char esep) | path expand --no-symlink }
+    to_string: {|v| $v | path expand --no-symlink | str join (char esep) }
+  }
+  "Path": {
+    from_string: {|s| $s | split row (char esep) | path expand --no-symlink }
+    to_string: {|v| $v | path expand --no-symlink | str join (char esep) }
+  }
 }
 
 # Directories to search for scripts when calling source or use
 # The default for this is $nu.default-config-dir/scripts
 $env.NU_LIB_DIRS = [
-    ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
-    ($nu.data-dir | path join 'completions') # default home for nushell completions
+  ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
+  ($nu.data-dir | path join 'completions') # default home for nushell completions
 ]
 
 # Directories to search for plugin binaries when calling register
 # The default for this is $nu.default-config-dir/plugins
 $env.NU_PLUGIN_DIRS = [
-    ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
+  ($nu.default-config-dir | path join 'plugins') # add <nushell-config-dir>/plugins
 ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
@@ -94,3 +94,8 @@ $env.COMPOSE_BAKE = true
 $env.OPENAI_API_KEY = "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"
 $env.OPENAI_MODEL = "meta-llama/llama-3.3-8b-instruct:free" # Default to "gpt-4o"
 $env.OPENAI_BASE_URL = "https://openrouter.ai/api/v1" # Default to None
+
+# Set environment variables according to the path of the clone
+$env.TOPIARY_CONFIG_FILE = ($env.XDG_CONFIG_HOME | path join topiary languages.ncl)
+$env.TOPIARY_LANGUAGE_DIR = ($env.XDG_CONFIG_HOME | path join topiary languages)
+$env.ENABLE_DEPRECATED_SPECIAL_OUTBOUNDS = "true"
