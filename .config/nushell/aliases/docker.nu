@@ -1,8 +1,8 @@
 # docker
 alias dbl =  env TERM="screen-256color" docker build
-alias dcb =  env TERM="screen-256color" docker-compose build
-alias dcdn =  env TERM="screen-256color" docker-compose down
-alias dce =  env TERM="screen-256color" docker-compose exec
+alias dcb =  env TERM="screen-256color" docker compose build
+alias dcdn =  env TERM="screen-256color" docker compose down
+alias dce =  env TERM="screen-256color" docker compose exec
 alias dcin =  env TERM="screen-256color" docker container inspect
 alias dck =  env TERM="screen-256color" docker compose kill
 alias dcl =  env TERM="screen-256color" docker compose logs

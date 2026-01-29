@@ -166,7 +166,6 @@ alias grbc = git rebase --continue
 alias grbi = git rebase --interactive
 alias grbo = git rebase --onto
 alias grbs = git rebase --skip
-alias grep = rg
 alias grev = git revert
 alias greva = git revert --abort
 alias grevc = git revert --continue

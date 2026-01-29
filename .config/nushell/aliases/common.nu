@@ -43,15 +43,15 @@ def tp [] {
   )
 }
 
-def comlete_uv [] {
+def complete_uv [] {
   use ($custom_completions | path join "uv/uv-completions.nu") *
 }
 
-def expand_alias [a: string@comlete_alias] {
+def expand_alias [a: string@complete_alias] {
   scope aliases | where name == $a
 }
 
-def comlete_alias [] {
+def complete_alias [] {
   {
     completions: (
       scope aliases | each {|line|
@@ -70,7 +70,7 @@ alias swo = nh os switch
 alias upd = nh os switch --update
 alias hms = nh home switch
 
-alias startwine = env '/home/nik/.local/share/StartWine/data/runtime/sw'
+alias startwine = env ($env.HOME | path join .local/share/StartWine/data/runtime/sw)
 alias abs = readlink -f
 alias cat = bat
 alias d = ripdrag -a -x
@@ -78,6 +78,7 @@ alias md = mkdir
 alias rd = rmdir
 alias py = python
 alias prename = perl-rename
+alias grep = rg
 alias sortnr = sort -n -r
 alias tt = tail -f
 alias to_clip = xclip -sel clip

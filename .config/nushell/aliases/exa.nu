@@ -1,14 +1,14 @@
-# exa
-alias tree = exa --tree
-alias l = exa -lhF
-alias lS = exa -1SshF
-alias la = exa -lAhF
-alias lart = exa -1cartF
-alias ldot = exa -ld .*
-alias ll = exa -l
-alias lr = exa -tRhF
-alias lrt = exa -1crtF
+# exa -> eza
+alias tree = eza --tree
+alias l = eza -lhF
+alias lS = eza -1SshF
+alias la = eza -lAhF
+alias lart = eza -1cartF
+alias ldot = eza -ld .*
+alias ll = eza -l
+alias lr = eza -tRhF
+alias lrt = eza -1crtF
 alias lsa = ls -lah
-alias lsn = exa -1
-alias lsr = exa -lARhF
-alias lt = exa -lthF
+alias lsn = eza -1
+alias lsr = eza -lARhF
+alias lt = eza -lthF
