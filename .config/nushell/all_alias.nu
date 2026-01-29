@@ -7,3 +7,4 @@ source /home/nik/.dotfiles/.config/nushell/aliases/pacman.nu
 source /home/nik/.dotfiles/.config/nushell/aliases/pre-commit.nu
 source /home/nik/.dotfiles/.config/nushell/aliases/rsync.nu
 source /home/nik/.dotfiles/.config/nushell/aliases/yay.nu
+source /home/nik/.dotfiles/.config/nushell/aliases/sing.nu
