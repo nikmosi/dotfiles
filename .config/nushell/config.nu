@@ -1,5 +1,6 @@
 const config_dir = ($nu.config-path | path dirname)
 const custom_completions = ($config_dir | path join ./modules/nu_scripts/custom-completions/)
+const module_nu_scripts = ($config_dir | path join ./modules/nu_scripts/)
 
 source ($config_dir | path join "all_alias.nu")
 source ($config_dir | path join "colors.nu")
@@ -146,9 +147,9 @@ $env.config = {
 }
 
 use ($custom_completions | path join "bat/bat-completions.nu") *
-use ($custom_completions | path join "git/git-completions.nu") *
 use ($custom_completions | path join "gh/gh-completions.nu") *
-use ($custom_completions | path join "docker/docker-completions.nu") *
+use ($custom_completions | path join "git/git-completions.nu") *
+# use ($custom_completions | path join "docker/docker-completions.nu") *
 use ($custom_completions | path join "tar/tar-completions.nu") *
 use ($custom_completions | path join "pass/pass-completions.nu") *
 use ($custom_completions | path join "pytest/pytest-completions.nu") *
@@ -156,3 +157,7 @@ use ($custom_completions | path join "rg/rg-completions.nu") *
 use ($custom_completions | path join "pre-commit/pre-commit-completions.nu") *
 use ($custom_completions | path join "eza/eza-completions.nu") *
 use ($custom_completions | path join "nix/nix-completions.nu") *
+use ($module_nu_scripts | path join "modules/docker") *
+use ($module_nu_scripts | path join "modules/argx") *
+use ($module_nu_scripts | path join "modules/lg") *
+use ($module_nu_scripts | path join "modules/kubernetes") *

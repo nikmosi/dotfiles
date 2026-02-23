@@ -91,11 +91,6 @@ $env.GTK_THEME = "Numix:dark"
 $env.PASSWORD_STORE_ENABLE_EXTENSIONS = true
 $env.COMPOSE_BAKE = true
 
-# SECURITY WARNING: Do not hardcode API keys in version-controlled files.
-# $env.OPENAI_API_KEY = "sk-or-v1-..."
-$env.OPENAI_MODEL = "meta-llama/llama-3.3-8b-instruct:free" # Default to "gpt-4o"
-$env.OPENAI_BASE_URL = "https://openrouter.ai/api/v1" # Default to None
-
 # Set environment variables according to the path of the clone
 $env.TOPIARY_CONFIG_FILE = ($env.XDG_CONFIG_HOME | path join topiary languages.ncl)
 $env.TOPIARY_LANGUAGE_DIR = ($env.XDG_CONFIG_HOME | path join topiary languages)
