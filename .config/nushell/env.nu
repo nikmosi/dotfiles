@@ -59,23 +59,43 @@ $env.NU_PLUGIN_DIRS = [
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
-let vars = (
-  bash -c '
-    env -i PATH=$PATH HOME=$HOME bash -c "
-      source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-      env
-    "
-  '
-)
-| lines
-| split column '='
-| rename name value
-| where name != 'PATH'
-| where name != '_'
-| where name != 'PWD'
-| reduce -f {} {|row acc| $acc | upsert $row.name $row.value }
+let hm_script = ($env.HOME | path join ".nix-profile/etc/profile.d/hm-session-vars.sh")
+let hm_cache = ($nu.cache-dir | path join "hm-session-vars.nuon")
 
-load-env $vars
+let hm_need_refresh = (
+  not ($hm_cache | path exists)
+  or (
+    ($hm_script | path exists)
+    and ((ls $hm_script | get 0.modified) > (ls $hm_cache | get 0.modified))
+  )
+)
+
+let hm_vars = if $hm_need_refresh and ($hm_script | path exists) {
+  let vars = (
+    bash -c '
+      env -i PATH=$PATH HOME=$HOME bash -c "
+        source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+        env
+      "
+    '
+  )
+  | lines
+  | split column '='
+  | rename name value
+  | where name != 'PATH'
+  | where name != '_'
+  | where name != 'PWD'
+  | reduce -f {} {|row acc| $acc | upsert $row.name $row.value }
+
+  $vars | save --force $hm_cache
+  $vars
+} else if ($hm_cache | path exists) {
+  open $hm_cache
+} else {
+  {}
+}
+
+load-env $hm_vars
 $env.PATH = $env.PATH | append "/home/nik/.local/bin"
 $env.GTK2_RC_FILES = "/usr/share/themes/Numix/gtk-2.0/gtkrc"
 $env.RUFF_EXPERIMENTAL_FORMATTER = "True"
@@ -94,4 +114,5 @@ $env.COMPOSE_BAKE = true
 # Set environment variables according to the path of the clone
 $env.TOPIARY_CONFIG_FILE = ($env.XDG_CONFIG_HOME | path join topiary languages.ncl)
 $env.TOPIARY_LANGUAGE_DIR = ($env.XDG_CONFIG_HOME | path join topiary languages)
-$env.ENABLE_DEPRECATED_SPECIAL_OUTBOUNDS = "true"
+$env.OPENCODE_ENABLE_EXA = 1
+$env.OPENCODE_EXPERIMENTAL_LSP_TOOL = true

@@ -26,6 +26,8 @@ def t [] {
   sesh connect .
 }
 
+alias tpg = echo (cd (fd --hidden "^.git$" | sed -e 's/.git\///' | fzf); t)
+
 def tp [] {
   sesh connect (
     sesh list --icons | fzf
@@ -41,10 +43,6 @@ def tp [] {
     --preview-window 'right:55%'
     --preview 'sesh preview {}'
   )
-}
-
-def complete_uv [] {
-  use ($custom_completions | path join "uv/uv-completions.nu") *
 }
 
 def expand_alias [a: string@complete_alias] {
@@ -73,7 +71,6 @@ alias hms = nh home switch
 alias startwine = env ($env.HOME | path join .local/share/StartWine/data/runtime/sw)
 alias abs = readlink -f
 alias cat = bat
-alias d = ripdrag -a -x
 alias md = mkdir
 alias rd = rmdir
 alias py = python
@@ -82,4 +79,6 @@ alias grep = rg
 alias sortnr = sort -n -r
 alias tt = tail -f
 alias to_clip = xclip -sel clip
-alias x = extract
+alias x = xonsh
+alias k = kubectl
+alias c = codex

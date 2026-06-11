@@ -5,23 +5,40 @@ const module_nu_scripts = ($config_dir | path join ./modules/nu_scripts/)
 source ($config_dir | path join "all_alias.nu")
 source ($config_dir | path join "colors.nu")
 
-mkdir ($nu.cache-dir | path join "carapace")
-carapace _carapace nushell | save --force ($nu.cache-dir | path join "carapace/init.nu")
-source ($nu.cache-dir | path join "carapace/init.nu")
+const cache_dir = $nu.cache-dir
+const carapace_dir = ($cache_dir | path join "carapace")
+const carapace_init = ($carapace_dir | path join "init.nu")
+mkdir $carapace_dir
+if not ($carapace_init | path exists) {
+    carapace _carapace nushell | save --force $carapace_init
+}
+source $carapace_init
 
-mkdir ($nu.cache-dir | path join "atuin")
-atuin init nu | save --force ($nu.cache-dir | path join "atuin/init.nu")
-source ($nu.cache-dir | path join "atuin/init.nu")
+const atuin_dir = ($cache_dir | path join "atuin")
+const atuin_init = ($atuin_dir | path join "init.nu")
+mkdir $atuin_dir
+if not ($atuin_init | path exists) {
+    atuin init nu | save --force $atuin_init
+}
+# source $atuin_init
 
 # Starship
-mkdir ($nu.cache-dir | path join "starship")
-starship init nu | save --force ($nu.cache-dir | path join "starship/init.nu")
-source ($nu.cache-dir | path join "starship/init.nu")
+const starship_dir = ($cache_dir | path join "starship")
+const starship_init = ($starship_dir | path join "init.nu")
+mkdir $starship_dir
+if not ($starship_init | path exists) {
+    starship init nu | save --force $starship_init
+}
+source $starship_init
 
 # zoxide
-mkdir ($nu.cache-dir | path join "zoxide")
-zoxide init nushell | save --force ($nu.cache-dir | path join "zoxide/init.nu")
-source ($nu.cache-dir | path join "zoxide/init.nu")
+const zoxide_dir = ($cache_dir | path join "zoxide")
+const zoxide_init = ($zoxide_dir | path join "init.nu")
+mkdir $zoxide_dir
+if not ($zoxide_init | path exists) {
+    zoxide init nushell | save --force $zoxide_init
+}
+source $zoxide_init
 
 let fish_completer = {|spans|
     fish --command $"complete '--do-complete=($spans | str join ' ')'"
@@ -121,13 +138,13 @@ $env.config = {
         cmd: $"source '($nu.env-path)';source '($nu.config-path)'"
       }
     }
-    {
-      name: atuin
-      modifier: control
-      keycode: char_r
-      mode: [emacs, vi_normal, vi_insert]
-      event: { send: executehostcommand cmd: (_atuin_search_cmd) }
-    }
+    # {
+    #   name: atuin
+    #   modifier: control
+    #   keycode: char_r
+    #   mode: [emacs, vi_normal, vi_insert]
+    #   event: { send: executehostcommand cmd: (_atuin_search_cmd) }
+    # }
   ]
   completions: {
     case_sensitive: false # set to true to enable case-sensitive completions
@@ -149,15 +166,17 @@ $env.config = {
 use ($custom_completions | path join "bat/bat-completions.nu") *
 use ($custom_completions | path join "gh/gh-completions.nu") *
 use ($custom_completions | path join "git/git-completions.nu") *
-# use ($custom_completions | path join "docker/docker-completions.nu") *
 use ($custom_completions | path join "tar/tar-completions.nu") *
 use ($custom_completions | path join "pass/pass-completions.nu") *
-use ($custom_completions | path join "pytest/pytest-completions.nu") *
+# use ($custom_completions | path join "pytest/pytest-completions.nu") *
 use ($custom_completions | path join "rg/rg-completions.nu") *
-use ($custom_completions | path join "pre-commit/pre-commit-completions.nu") *
-use ($custom_completions | path join "eza/eza-completions.nu") *
+# use ($custom_completions | path join "pre-commit/pre-commit-completions.nu") *
+# use ($custom_completions | path join "eza/eza-completions.nu") *
 use ($custom_completions | path join "nix/nix-completions.nu") *
-use ($module_nu_scripts | path join "modules/docker") *
 use ($module_nu_scripts | path join "modules/argx") *
 use ($module_nu_scripts | path join "modules/lg") *
 use ($module_nu_scripts | path join "modules/kubernetes") *
+use ($custom_completions | path join "uv/uv-completions.nu") *
+use ($module_nu_scripts | path join "modules/docker") *
+
+alias d = ripdrag -a -x
