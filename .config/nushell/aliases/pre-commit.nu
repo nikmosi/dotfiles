@@ -1,6 +1,1 @@
-# pre_commit.fish
-alias prc = pre-commit
-alias prcau = pre-commit autoupdate
-alias prcr = pre-commit run
-alias prcra = pre-commit run --all-files
-alias prcrf = pre-commit run --files
+/nix/store/xggsqlhaikysrml3r0wxd2jz5mr21hz8-home-manager-files/.config/nushell/aliases/pre-commit.nu
