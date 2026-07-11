@@ -1,1 +1,0 @@
-/nix/store/xggsqlhaikysrml3r0wxd2jz5mr21hz8-home-manager-files/.config/nushell/aliases/yay.nu
